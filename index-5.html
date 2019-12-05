@@ -32,9 +32,12 @@
                            <li>
                               <div class="search">
                               	<input type="text" class="form-control" placeholder="请输入需要查询的食品" />
-                              	<button type="button" class="searchText btn-default">搜索一下</button>
-                              	<button class="searchAudio"><a class="icofont-camera-alt"></a></button>
-                              	<button class="searchP ic"><a class="icofont-record"></a></button>            
+                                 <button type="button" class="searchText btn-default">搜索一下</button>
+                              	<!-- 上传图片 -->
+                                 <input id="searchPic" type="file" accept="image/*" />
+                                 <label for="searchPic" class="searchPic"><a class="icofont-camera-alt"></a></label>
+                                 <!-- zjx的js代码还需绑定到这个按钮上 -->
+                              	<button id="searchAudio" class="searchAudio"><a class="icofont-record"></a></button>            
                               </div>
                            </li>
                         </ul>
@@ -1020,5 +1023,6 @@
       <script src="js/jquery.magnific-popup.min.js"></script>
       <script src="js/jquery.barfiller.js"></script>
       <script src="js/imagelightbox.min.js"></script>
+      <script src="js/soa.js"></script>
    </body>
 </html>

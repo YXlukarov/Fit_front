@@ -44,11 +44,17 @@ p {
 	position: absolute;
 	border: 0;
 	background-color: rgba(255,255,255,0.2);
-	top: 8px;
-	right: 220px
+	top: 9px;
+	right: 230px
+}
+.search #searchPic{
+	display: none;
 }
 .search .searchPic a{
-	border: none
+	border: none;
+}
+.search .searchPic a input{
+	display: none;
 }
 .search .searchAudio{
 	position: absolute;
@@ -58,7 +64,10 @@ p {
 	right: 200px
 }
 .search .searchAudio a{
-	border: none
+	border: none;
+}
+.searchChange {
+	color: red;
 }
 .tt-header {
 	position: absolute;
