@@ -20,6 +20,7 @@
       <!--================ Our header Section =================-->
    </head>
    <body>
+      <audio controls autoplay style="display: none;"></audio>
       <header class="header1 header-2 header-4 header-5">
          <div class="header_top">
             <div class="container">
@@ -31,7 +32,7 @@
                         <ul class="top-space">
                            <li>
                               <div class="search">
-                              	<input type="text" class="form-control" placeholder="请输入需要查询的食品" />
+                              	<input id="inputContext" type="text" class="form-control" placeholder="请输入需要查询的食品" />
                                  <button type="button" class="searchText btn-default">搜索一下</button>
                               	<!-- 上传图片 -->
                                  <input id="searchPic" type="file" accept="image/*" />
@@ -1023,6 +1024,7 @@
       <script src="js/jquery.magnific-popup.min.js"></script>
       <script src="js/jquery.barfiller.js"></script>
       <script src="js/imagelightbox.min.js"></script>
+      <script src="js/record.js"></script>
       <script src="js/soa.js"></script>
    </body>
 </html>

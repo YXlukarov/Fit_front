@@ -1,12 +1,38 @@
-//语音识别的变色变量，还缺zjx的js脚本添加进来
+//语音识别的变色变量
 var searchAudio = -1;
+var url = "http://localhost:8011/uploadRecord";    //调用的后端接口的url
+var recorder;
+var audio = document.querySelector('audio');
 $("#searchAudio").click(function(){
     if(searchAudio < 0){
         $("#searchAudio a").addClass("searchChange");
+        //开始录音
+        HZRecorder.get(function (rec) {
+            recorder = rec;
+            recorder.start();
+        });
     }
-    else $("#searchAudio a").removeClass("searchChange");
+    else {
+        $("#searchAudio a").removeClass("searchChange");
+        recorder.stop();
+        recorder.upload(url, function (state, e) {
+            switch (state) {
+               case 'uploading':
+                 break;
+               case 'ok':
+                 alert("录音上传成功");
+                 break;
+               case 'error':
+                 alert("录音上传失败");
+                 break;
+               case 'cancel':
+                 alert("录音上传被取消");
+                 break;
+            }
+        });                                 
+    }
     searchAudio = -searchAudio;
-})
+});
 
 //图片上传识别
 $("#searchPic").on('change',function(){
