@@ -192,7 +192,7 @@
                <div class="col-md-3 col-sm-12  main-froms froms-to ">
                   <aside>
                      <h1>识别结果</h1>
-                     <table class="table" id="listTable">
+                     <table class="table">
                         <thead>
                            <tr class="table-warning">
                               <th>名称</th>
@@ -200,62 +200,7 @@
                               <th>热量</th>
                            </tr>
                         </thead>
-                        <tbody>
-                           <tr>
-                              <td>
-                                 <h5><a href="#">牛油果沙拉</a></h5>
-                              </td>
-                              <td>
-                                 <h5>0.146</h5>
-                              </td>
-                              <td>
-                                 <h5>884KJ/100g</h5>
-                              </td>
-                           </tr>
-                           <tr>
-                              <td>
-                                 <h5><a href="#">牛油果沙拉</a></h5>
-                              </td>
-                              <td>
-                                 <h5>0.146</h5>
-                              </td>
-                              <td>
-                                 <h5>884KJ/100g</h5>
-                              </td>
-                           </tr>
-                           <tr>
-                              <td>
-                                 <h5><a href="#">牛油果沙拉</a></h5>
-                              </td>
-                              <td>
-                                 <h5>0.146</h5>
-                              </td>
-                              <td>
-                                 <h5>884KJ/100g</h5>
-                              </td>
-                           </tr>
-                           <tr>
-                              <td>
-                                 <h5><a href="#">牛油果沙拉</a></h5>
-                              </td>
-                              <td>
-                                 <h5>0.146</h5>
-                              </td>
-                              <td>
-                                 <h5>884KJ/100g</h5>
-                              </td>
-                           </tr>
-                           <tr>
-                              <td>
-                                 <h5><a href="#">牛油果沙拉</a></h5>
-                              </td>
-                              <td>
-                                 <h5>0.146</h5>
-                              </td>
-                              <td>
-                                 <h5>884KJ/100g</h5>
-                              </td>
-                           </tr>
+                        <tbody  id="tbody">
                         </tbody>
                      </table>
                      <!-- <div class="main-froms froms-to">
@@ -412,5 +357,56 @@
       <script src="js/owl.carousel.min.js"></script>
       <script src="js/jquery.magnific-popup.min.js"></script>
       <script src="js/jquery.barfiller.js"></script>
+
+      <script>
+         //存储全局url
+         var hostURL = ""
+         //存储返回结果
+         var results
+
+         //从当前目录下的url.json文件里，获取全局的url配置
+         $.getJSON("./url.json", function (data) {
+            hostURL = data.url
+
+            //使用ajax发送请求，获取菜品信息并且呈现在页面上。
+            $.ajax({
+               url: hostURL + "/dish",
+               type: "get",
+               success: function (data) {
+                  console.log(data.length)
+                  console.log(data[0])
+                  console.log(data[0].probability)
+                  console.log(data[0].baike_info.description)
+                  results = data
+
+                  //向表格中添加元素
+                  var tbody = $('#tbody')
+                  for(var i = 0;i < data.length;i++){
+                     var item = data[i];
+                     var calorie;
+                     if(item.has_calorie){
+                        calorie = item.calorie+'KJ/100g'
+                     }else{
+                        calorie = "无"
+                     }
+                     tbody.append('<tr><td><h5><a href="javascript:;" class="a_click" id='+i+'>'+item.name+'</a></h5></td><td><h5>'+item.probability+'</h5> </td> <td> <h5>'+calorie+'</h5> </td> </tr>')
+                  }
+                  $("a[class='a_click']").click(function () {
+                     var id = $(this).attr("id");
+                     console.log(id);
+                     $("#description").text(results[id].baike_info.description)
+                  });
+               },
+               error: function () {
+                  console.log(hostURL)
+               }
+            })
+         });
+         console.log(hostURL)
+
+
+      </script>
    </body>
 </html>
+
+
