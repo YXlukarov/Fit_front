@@ -34,10 +34,11 @@
                               <div class="search">
                               	<input id="inputContext" type="text" class="form-control" placeholder="请输入需要查询的食品" />
                                  <button type="button" class="searchText btn-default">搜索一下</button>
-                              	<!-- 上传图片 -->
-                                 <input id="searchPic" type="file" accept="image/*" />
-                                 <label for="searchPic" class="searchPic"><a class="icofont-camera-alt"></a></label>
-                                 <!-- zjx的js代码还需绑定到这个按钮上 -->
+                                 <!-- 上传图片 -->
+                                 <form id="uploadPic" enctype="multipart/form-data"> 
+                                    <input name="picture" id="searchPic" type="file" accept="image/*" />
+                                    <label for="searchPic" class="searchPic"><a class="icofont-camera-alt"></a></label>
+                                 </form>
                               	<button id="searchAudio" class="searchAudio"><a class="icofont-record"></a></button>            
                               </div>
                            </li>

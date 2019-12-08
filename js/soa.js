@@ -35,21 +35,21 @@ $("#searchAudio").click(function(){
 });
 
 //图片上传识别
+var url = "http://localhost:8011/dish/1";
 $("#searchPic").on('change',function(){
     var form_data = new FormData();
-    var file_data = $("#searchPic").prop("files")[0];
-    form_data.append("img", file_data);
+    var file_data = $("#searchPic")[0].files[0];
+    form_data.append("picture", file_data);
     $.ajax({
+        async: false,
         type: "POST",
-        //url待定
-        url: "",
-        dataType: "json",
-        crossDomain: true,
-        processData: false,
+        //暂用sm图云
+        url: url,
         contentType: false,
+        processData: false,
         data: form_data 
     }).success(function(msg){
-        //重定向到识别界面
+        console.log(msg);
     }).fail(function(msg){
         alert("上传失败!")
     })
