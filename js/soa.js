@@ -43,13 +43,13 @@ $("#searchPic").on('change',function(){
     $.ajax({
         async: false,
         type: "POST",
-        //暂用sm图云
         url: url,
         contentType: false,
         processData: false,
         data: form_data 
     }).success(function(msg){
         console.log(msg);
+        window.location.replace("http://127.0.0.1:5500/about.html");
     }).fail(function(msg){
         alert("上传失败!")
     })
