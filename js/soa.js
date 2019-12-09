@@ -48,8 +48,9 @@ $("#searchPic").on('change',function(){
         processData: false,
         data: form_data 
     }).success(function(msg){
-        console.log(msg);
-        window.location.replace("http://127.0.0.1:5500/about.html");
+        console.log(msg[0].targetImage_url);
+        window.sessionStorage.setItem('dish',JSON.stringify(msg));
+        window.location.replace("http://127.0.0.1:5500/dish-details.html?targetImage_url=" + msg[0].targetImage_url);
     }).fail(function(msg){
         alert("上传失败!")
     })

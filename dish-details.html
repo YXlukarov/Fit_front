@@ -14,6 +14,7 @@
       <link href="css/style.css" rel="stylesheet" type="text/css">
       <link href="css/responsive.css" rel="stylesheet" type="text/css">
       <link href="css/magnific-popup.css" rel="stylesheet">
+      <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=WXUC511ElzfLG35xGo2Kd0x9x1BOY91a"></script>
       <title>Fitaza</title>
       <!--================ Our header Section =================-->
    </head>
@@ -166,7 +167,7 @@
                      <div class="normall blogs completeblog">
                         <div class="portfolioHover">
                            <div class="image-opacity-on-hover image-zoom-on-hover">
-                              <img src="images/Block-Detail/牛油果沙拉.jpg" alt="image" class="img-responsive">
+                              <img src="images/Block-Detail/牛油果沙拉.jpg" alt="image" class="img-responsive" id="image">
                            </div>
                         </div>
                      </div>
@@ -180,10 +181,10 @@
                         <div class="col-sm-12 col-md-12">
                            <div class="location-images">
                               <h4>轻食地图</h4>
-                              <div class="google-maps">
-                                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d247951.116999982!2d-117.16275307574772!3d32.81099927019145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80d9530fad921e4b%3A0xd3a21fdfd15df79!2sSan+Diego%2C+CA%2C+USA!5e0!3m2!1sen!2sin!4v1536313744129">
-                                 </iframe>
-                              </div>
+                              <div class="baidu-map-in-search">
+                                    <div id="l-map"></div>
+                                    <div id="r-result"></div>
+                                 </div>
                            </div>
                         </div>
                      </div>
@@ -359,53 +360,126 @@
       <script src="js/jquery.barfiller.js"></script>
 
       <script>
-         //存储全局url
-         var hostURL = ""
-         //存储返回结果
-         var results
+         //获取url中的参数
+         function getUrlParam(name) {
+            //构造一个含有目标参数的正则表达式对象 &name=参数&
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);//匹配目标参数
+            if (r != null) return unescape(r[2]); return null;//返回参数值
+         }
 
-         //从当前目录下的url.json文件里，获取全局的url配置
-         $.getJSON("./url.json", function (data) {
-            hostURL = data.url
-
-            //使用ajax发送请求，获取菜品信息并且呈现在页面上。
-            $.ajax({
-               url: hostURL + "/dish",
-               type: "get",
-               success: function (data) {
-                  console.log(data.length)
-                  console.log(data[0])
-                  console.log(data[0].probability)
-                  console.log(data[0].baike_info.description)
-                  results = data
-
-                  //向表格中添加元素
-                  var tbody = $('#tbody')
-                  for(var i = 0;i < data.length;i++){
-                     var item = data[i];
-                     var calorie;
-                     if(item.has_calorie){
-                        calorie = item.calorie+'KJ/100g'
-                     }else{
-                        calorie = "无"
-                     }
-                     tbody.append('<tr><td><h5><a href="javascript:;" class="a_click" id='+i+'>'+item.name+'</a></h5></td><td><h5>'+item.probability+'</h5> </td> <td> <h5>'+calorie+'</h5> </td> </tr>')
-                  }
-                  $("a[class='a_click']").click(function () {
-                     var id = $(this).attr("id");
-                     console.log(id);
-                     $("#description").text(results[id].baike_info.description)
-                  });
-               },
-               error: function () {
-                  console.log(hostURL)
-               }
-            })
-         });
-         console.log(hostURL)
+         var targetImage_url = getUrlParam("targetImage_url");
+         console.log(targetImage_url);
 
 
+         $("#image").attr("src",targetImage_url)
+
+         var dish = JSON.parse(window.sessionStorage.getItem('dish'));
+         console.log(dish[0].targetImage_url)
+
+         // //存储全局url
+         // var hostURL = ""
+         // //存储返回结果
+         // var results
+
+         // //从当前目录下的url.json文件里，获取全局的url配置
+         // $.getJSON("./url.json", function (data) {
+         //    hostURL = data.url
+
+         //    //使用ajax发送请求，获取菜品信息并且呈现在页面上。
+         //    $.ajax({
+         //       url: hostURL + "/dish",
+         //       type: "get",
+         //       success: function (data) {
+         //          console.log(data.length)
+         //          console.log(data[0])
+         //          console.log(data[0].probability)
+         //          console.log(data[0].baike_info.description)
+         //          results = data
+
+         //          //向表格中添加元素
+         //          var tbody = $('#tbody')
+         //          for(var i = 0;i < data.length;i++){
+         //             var item = data[i];
+         //             var calorie;
+         //             if(item.has_calorie){
+         //                calorie = item.calorie+'KJ/100g'
+         //             }else{
+         //                calorie = "无"
+         //             }
+         //             tbody.append('<tr><td><h5><a href="javascript:;" class="a_click" id='+i+'>'+item.name+'</a></h5></td><td><h5>'+item.probability+'</h5> </td> <td> <h5>'+calorie+'</h5> </td> </tr>')
+         //          }
+         //          $("a[class='a_click']").click(function () {
+         //             var id = $(this).attr("id");
+         //             console.log(id);
+         //             $("#description").text(results[id].baike_info.description)
+         //          });
+         //       },
+         //       error: function () {
+         //          console.log(hostURL)
+         //       }
+         //    })
+         // });
+         
+         $(function () {
+            // //存储全局url
+            // var hostURL = ""
+
+            // //从当前目录下的url.json文件里，获取全局的url配置
+            // $.getJSON("./url.json", function (data) {
+            //     hostURL = data.url
+            // });
+
+            console.log(dish.length)
+            console.log(dish[0])
+            console.log(dish[0].probability)
+            console.log(dish[0].description)
+            results = dish
+
+            $("#description").text(results[0].description)   
+
+            //向表格中添加元素
+            var tbody = $('#tbody')
+            for(var i = 0;i < dish.length;i++){
+               var item = dish[i];
+               var calorie;
+               // if(item.has_calorie){
+                  calorie = item.calorie+'KJ/100g'
+               // }else{
+               //    calorie = "无"
+               // }
+               tbody.append('<tr><td><h5><a href="javascript:;" class="a_click" id='+i+'>'+item.name+'</a></h5></td><td><h5>'+item.probability+'</h5> </td> <td> <h5>'+calorie+'</h5> </td> </tr>')
+            }
+            $("a[class='a_click']").click(function () {
+               var id = $(this).attr("id");
+               console.log(id);
+               $("#description").text(results[id].description)
+            });      
+        });
       </script>
+      <script type="text/javascript">
+         // 百度地图API功能
+         var map = new BMap.Map("l-map");
+         //var point = new BMap.Point(116.331398,39.897445);
+         //map.centerAndZoom(point,12);
+         var cityPoint;  
+         var geolocation = new BMap.Geolocation();
+         geolocation.getCurrentPosition(function(r){
+            if(this.getStatus() == BMAP_STATUS_SUCCESS){
+               cityPoint = r.point;
+               console.log(cityPoint);
+               map.centerAndZoom(cityPoint,18);
+               var local = new BMap.LocalSearch(map, {renderOptions: {map: map,panel: "r-result",autoViewport: true}}); 
+               local.searchNearby("餐饮",cityPoint,500);
+            }
+            else {
+               console.error('failed'+this.getStatus());
+            }        
+         });
+         
+   
+      
+         </script>
    </body>
 </html>
 

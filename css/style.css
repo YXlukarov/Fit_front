@@ -6165,7 +6165,7 @@ select {
 .main-appointment button.btn.btn-success.sim-button.button8 span {
 	padding-top: -5px;
 }
-/**google-map start **/
+/**baidu-map in index page start **/
 .baidu-map {
 	position: relative;
 	padding-top: 1%;
@@ -6182,6 +6182,26 @@ select {
 .baidu-map #r-result{
 	position: absolute;
 	right: 0px;
+	width: 300px;
+	height: 775px
+}
+
+.baidu-map-in-search {
+	position: relative;
+	padding-top: 1%;
+	padding-left: -16%;
+	padding-bottom: 5%;
+	height: 800px;
+	width: 1310px
+}
+.baidu-map-in-search #l-map{
+	position: absolute;
+	width: 920px;
+	height: 775px
+}
+.baidu-map-in-search #r-result{
+	position: absolute;
+	right: 80px;
 	width: 300px;
 	height: 775px
 }
