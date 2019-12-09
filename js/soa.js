@@ -88,3 +88,19 @@ $(".latest_news").ready(function(){
         })
     
 })
+
+//分享API
+mobShare.config( {
+  
+    debug: true, // 开启调试，将在浏览器的控制台输出调试信息
+
+    appkey: '2d4941ecfe0f2', // appkey
+
+    params: {
+        url: 'http://127.0.0.1:5500/Fit_front/index-5.html', // 分享链接
+        title: "我在Fit上管理健康，大家快来啊，一起", // 分享标题
+        description: "这是一个很好的健康管理网站", // 分享内容
+        pic: '', // 分享图片，使用逗号,隔开
+        reason:'',//自定义评论内容，只应用与QQ,QZone与朋友网
+    },
+} );
