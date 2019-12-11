@@ -10709,3 +10709,11 @@ h3.tt-title{
 .scrollup.open{
   display: block;
 }
+
+/* 
+	Video in page index-5
+ */
+.index-video{
+	width: 100%;
+	height: 800px;
+}
