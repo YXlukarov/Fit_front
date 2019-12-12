@@ -104,3 +104,44 @@ mobShare.config( {
         reason:'',//自定义评论内容，只应用与QQ,QZone与朋友网
     },
 } );
+
+
+//登录
+$(function () {
+    //存储全局url
+    var hostURL = ""
+
+    //从当前目录下的url.json文件里，获取全局的url配置
+    $.getJSON("./url.json", function (data) {
+        hostURL = data.url
+    });
+    //为获取验证码绑定事件
+    $("#loginBtn").on("click", btn);
+
+    function btn() {
+        var username = $("input[name=username]").val();
+        var password = $("input[name=password]").val(); 
+        $.ajax({
+            url: hostURL+"/login",
+            async: true,
+            type: "post",
+            dataType: "String",
+            data: { "username": username ,"password":password},
+            success: function (data) {
+                alert("登录发送成功");
+            },
+            error: function () {
+                console.log("登录不成功")
+            }
+        });
+    }
+});
+
+
+$('#login').on('hidden.bs.modal', function () {
+    //点击登录之后进行填写身份信息
+    $("#register").modal({
+      keyboard: false,
+      show:true
+    });
+  });

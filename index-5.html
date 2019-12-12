@@ -1,172 +1,265 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-      <meta name="format-detection" content="telephone=no" />
-      <meta name="apple-mobile-web-app-capable" content="yes" />
-      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
-      <link href="css/bootstrap.min.css" rel="stylesheet">
-      <link rel="stylesheet" href="css/font-awesome.min.css">
-      <link href="css/animate.css" rel="stylesheet">
-      <link href="css/swiper.css" rel="stylesheet" type="text/css">
-      <link href="css/owl.carousel.min.css" rel="stylesheet">
-      <link href="css/style.css" rel="stylesheet" type="text/css">
-      <link href="css/responsive.css" rel="stylesheet" type="text/css">
-      <link href="css/magnific-popup.css" rel="stylesheet">
-      <link href="css/light_box.css" rel="stylesheet" type="text/css">
-      <link href="css/icofont.css" rel="stylesheet" type="text/css">
-      <link href="icofont.min.css" rel="stylesheet" type="text/css">
-      <title>Fitaza</title>
-      <!--================ Our header Section =================-->
-   </head>
-   <body>
-      <audio controls autoplay style="display: none;"></audio>
-      <header class="header1 header-2 header-4 header-5">
-         <div class="header_top">
-            <div class="container">
-               <div class="row">
-                  <div class="col-md-12">
-                     <div class="logo pull-left main-logo"><a href="index.html"><img src="images/logo-top.png" class="img-responsive" alt=""></a></div>
-                     <div class="cmn-toggle-switch"><span></span></div>
-                     <div class="right_content1 pull-right">
-                        <ul class="top-space">
-                           <li>
-                              <div class="search">
-                              	<input id="inputContext" type="text" class="form-control" placeholder="请输入需要查询的食品" />
-                                 <button type="button" class="searchText btn-default">搜索一下</button>
-                                 <!-- 上传图片 -->
-                                 <form id="uploadPic" enctype="multipart/form-data"> 
-                                    <input name="picture" id="searchPic" type="file" accept="image/*" />
-                                    <label for="searchPic" class="searchPic"><a class="icofont-camera-alt"></a></label>
-                                 </form>
-                              	<button id="searchAudio" class="searchAudio"><a class="icofont-record"></a></button>            
-                              </div>
-                           </li>
-                        </ul>
-                     </div>
+
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <meta name="format-detection" content="telephone=no" />
+   <meta name="apple-mobile-web-app-capable" content="yes" />
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+   <link href="css/bootstrap.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="css/font-awesome.min.css">
+   <link href="css/animate.css" rel="stylesheet">
+   <link href="css/swiper.css" rel="stylesheet" type="text/css">
+   <link href="css/owl.carousel.min.css" rel="stylesheet">
+   <link href="css/style.css" rel="stylesheet" type="text/css">
+   <link href="css/responsive.css" rel="stylesheet" type="text/css">
+   <link href="css/magnific-popup.css" rel="stylesheet">
+   <link href="css/light_box.css" rel="stylesheet" type="text/css">
+   <link href="css/icofont.css" rel="stylesheet" type="text/css">
+   <link href="icofont.min.css" rel="stylesheet" type="text/css">
+   <title>Fitaza</title>
+   <!--================ Our header Section =================-->
+</head>
+
+<body>
+   <!-- 登录窗口 -->
+   <div id="login" class="modal fade">
+      <div class="modal-dialog">
+         <div class="modal-content">
+            <div class="modal-body">
+               <button class="close" data-dismiss="modal">
+                  <span>&times;</span>
+               </button>
+            </div>
+            <div class="modal-title">
+               <h1 class="text-center">登录</h1>
+            </div>
+            <div class="modal-body">
+               <form class="form-group" action="javascript:;">
+                  <div class="form-group">
+                     <label for="">用户名</label>
+                     <input class="form-control" name="username" type="text" placeholder="">
                   </div>
-               </div>
+                  <div class="form-group">
+                     <label for="">密码</label>
+                     <input class="form-control" name="password" type="password" placeholder="">
+                  </div>
+                  <div class="text-right">
+                     <button class="btn btn-primary" type="submit" id="loginBtn" data-dismiss="modal">登录</button>
+                     <button class="btn btn-danger" data-dismiss="modal">取消</button>
+                  </div>
+                  <a href="" data-toggle="modal" data-dismiss="modal" data-target="#register">还没有账号？点我注册</a>
+               </form>
             </div>
          </div>
-         <div class="tt-header pull-logo">
-            <div class="container">
-               <div class="top-inner clearfix">
-                  <div class="logo pull-left main-logo "><a href="index.html">
-                     <img src="images/logo-top.png" class="img-responsive" alt="" title="logo"></a></div>
+      </div>
+   </div>
+
+   <!-- 填写信息窗口 -->
+   <div id="register" class="modal fade" tabindex="-1">
+      <div class="modal-dialog">
+         <div class="modal-content">
+            <div class="modal-body">
+               <button class="close" data-dismiss="modal">
+                  <span>&times;</span>
+               </button>
+            </div>
+            <div class="modal-title">
+               <h1 class="text-center">您的健康信息</h1>
+            </div>
+            <div class="modal-body">
+               <form class="form-group" action="personal-center.html">
+                  <div class="form-group">
+                     <label for="">性别</label>
+                     <div class="radio">
+                        <label>
+                           <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>男
+                        </label>
+                        <label>
+                                        
+                        </label>
+                        <label>
+                           <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">女
+                        </label>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label for="">身高(cm)</label>
+                     <input class="form-control" type="text" placeholder="">
+                  </div>
+                  <div class="form-group">
+                     <label for="">体重(kg)</label>
+                     <input class="form-control" type="number" placeholder="">
+                  </div>
+                  <div class="form-group">
+                     <label for="">年龄</label>
+                     <input class="form-control" type="number" placeholder="">
+                  </div>
+
+
+                  <div class="text-right">
+                     <button class="btn btn-primary" type="submit" id="submit">提交</button>
+                     <button class="btn btn-danger" data-dismiss="modal">取消</button>
+                  </div>
+                  <a href="" data-toggle="modal" data-dismiss="modal" data-target="#login">已有账号？点我登录</a>
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <audio controls autoplay style="display: none;"></audio>
+   <header class="header1 header-2 header-4 header-5">
+      <div class="header_top">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="logo pull-left main-logo"><a href="index.html"><img src="images/logo-top.png"
+                           class="img-responsive" alt=""></a></div>
                   <div class="cmn-toggle-switch"><span></span></div>
+                  <div class="right_content1 pull-right">
+                     <ul class="top-space">
+                        <li>
+                           <div class="search">
+                              <input id="inputContext" type="text" class="form-control" placeholder="请输入需要查询的食品" />
+                              <button type="button" class="searchText btn-default">搜索一下</button>
+                              <!-- 上传图片 -->
+                              <form id="uploadPic" enctype="multipart/form-data">
+                                 <input name="picture" id="searchPic" type="file" accept="image/*" />
+                                 <label for="searchPic" class="searchPic"><a class="icofont-camera-alt"></a></label>
+                              </form>
+                              <button id="searchAudio" class="searchAudio"><a class="icofont-record"></a></button>
+                           </div>
+                        </li>
+                     </ul>
+                  </div>
                </div>
-               <div class="toggle-block">
-                  <div class="toggle-block-container">
-                     <nav class="main-nav clearfix">
-                        <ul>
-                           <li class="active parent">
-                              <a href="index-5.html"><span>首页</span></a>
-                           </li>
-                           <li class="parent">
-                              <a href="about.html"><span>关于我们</span></a>
-                           </li>
-                           <li class="parent">
-                              <a href="classes.html"><span>健身计划<i class="menu-toggle fa fa-angle-down"></i></span></a>
-                              <ul>
-                                 <li><a href="runing-fitness.html"><span>Running Classes</span></a></li>
-                                 <li><a href="weight-lifting.html"><span>Weight Lifting Classes</span></a></li>
-                                 <li><a href="organic-yoga.html"><span>Organic Yoga Classes</span></a></li>
-                                 <li><a href="body-building.html"><span>Body Building Classes</span></a></li>
-                                 <li><a href="raw-fitness.html"><span>Raw Fitness Classes</span></a></li>
-                                 <li><a href="body-combact.html"><span>Body Combat Classes</span></a></li>
-                                 <li><a href="strength-training.html"><span>Strength Training</span></a></li>
-                                 <li><a href="power-yoga.html"><span>Power Yoga</span></a></li>
-                                 <li><a href="pilates-fitness.html"><span>Pilates Fitness</span></a></li>
+            </div>
+         </div>
+      </div>
+      <div class="tt-header pull-logo">
+         <div class="container">
+            <div class="top-inner clearfix">
+               <div class="logo pull-left main-logo "><a href="index.html">
+                     <img src="images/logo-top.png" class="img-responsive" alt="" title="logo"></a></div>
+               <div class="cmn-toggle-switch"><span></span></div>
+            </div>
+            <div class="toggle-block">
+               <div class="toggle-block-container">
+                  <nav class="main-nav clearfix">
+                     <ul>
+                        <li class="active parent">
+                           <a href="index-5.html"><span>首页</span></a>
+                        </li>
+                        <li class="parent">
+                           <a href="about.html"><span>关于我们</span></a>
+                        </li>
+                        <li class="parent">
+                           <a href="classes.html"><span>健身计划<i class="menu-toggle fa fa-angle-down"></i></span></a>
+                           <ul>
+                              <li><a href="runing-fitness.html"><span>Running Classes</span></a></li>
+                              <li><a href="weight-lifting.html"><span>Weight Lifting Classes</span></a></li>
+                              <li><a href="organic-yoga.html"><span>Organic Yoga Classes</span></a></li>
+                              <li><a href="body-building.html"><span>Body Building Classes</span></a></li>
+                              <li><a href="raw-fitness.html"><span>Raw Fitness Classes</span></a></li>
+                              <li><a href="body-combact.html"><span>Body Combat Classes</span></a></li>
+                              <li><a href="strength-training.html"><span>Strength Training</span></a></li>
+                              <li><a href="power-yoga.html"><span>Power Yoga</span></a></li>
+                              <li><a href="pilates-fitness.html"><span>Pilates Fitness</span></a></li>
+                           </ul>
+                        </li>
+                        <li class="parent">
+                           <a href="#"><span>食谱推荐</span></a>
+                        </li>
+                        <li class="parent">
+                           <a href="#"><span>健康贴士</span></a>
+                        </li>
+                        <li>
+                           <a href="contactus.html"><span>饮食地图</span></a>
+                        </li>
+                        <li>
+                           <a href="contactus.html"><span>智能客服</span></a>
+                        </li>
+                        <li>
+                           <a class="-mob-share-open" href="javascript:;"><span>分享 </span><i class="fa fa-share-alt"
+                                 aria-hidden="true"></i></a>
+                           <div class="-mob-share-ui" style="display: none">
+                              <ul class="-mob-share-list">
+                                 <li class="-mob-share-weibo">
+                                    <p>新浪微博</p>
+                                 </li>
+                                 <li class="-mob-share-qzone">
+                                    <p>QQ空间</p>
+                                 </li>
+                                 <li class="-mob-share-qq">
+                                    <p>QQ好友</p>
+                                 </li>
+                                 <li class="-mob-share-douban">
+                                    <p>豆瓣</p>
+                                 </li>
+                                 <li class="-mob-share-facebook">
+                                    <p>Facebook</p>
+                                 </li>
+                                 <li class="-mob-share-twitter">
+                                    <p>Twitter</p>
+                                 </li>
                               </ul>
-                           </li>
-                           <li class="parent">
-                              <a href="#"><span>食谱推荐</span></a>
-                           </li>
-                           <li class="parent">
-                              <a href="#"><span>健康贴士</span></a>
-                           </li>
-                           <li>
-                              <a href="contactus.html"><span>饮食地图</span></a>
-                           </li>
-                           <li>
-                              <a href="contactus.html"><span>智能客服</span></a>
-                           </li>
-                           <li>
-                              <a class="-mob-share-open" href="javascript:;"><span>分享 </span><i class="fa fa-share-alt"
-                                      aria-hidden="true"></i></a>
-                              <div class="-mob-share-ui" style="display: none">
-                                  <ul class="-mob-share-list">
-                                      <li class="-mob-share-weibo">
-                                          <p>新浪微博</p>
-                                      </li>
-                                      <li class="-mob-share-qzone">
-                                          <p>QQ空间</p>
-                                      </li>
-                                      <li class="-mob-share-qq">
-                                          <p>QQ好友</p>
-                                      </li>
-                                      <li class="-mob-share-douban">
-                                          <p>豆瓣</p>
-                                      </li>
-                                      <li class="-mob-share-facebook">
-                                          <p>Facebook</p>
-                                      </li>
-                                      <li class="-mob-share-twitter">
-                                          <p>Twitter</p>
-                                      </li>
-                                  </ul>
-                                  <div class="-mob-share-close">取消</div>
-                              </div>
-                              <div class="-mob-share-ui-bg"></div>
-                          </li>
-                        </ul>
-                     </nav>
-                  </div>
-               </div>
-               <div class="social-icon">
-                  <ol class="header_social">
-                     <li class="header-dish">
-                        <p>菜品识别</p>
-                     </li>
-                     <li>
-                        <form class="camfunc" id="uploadPic" enctype="multipart/form-data"> 
-                           <input name="picture" id="searchPic" type="file" accept="image/*" />
-                           <label for="searchPic" class="searchPic"><a class="icofont-upload-alt"></a></label>
-                        </form>
-                     </li>
-                     <li><a href="#" target="_blank"><i class="icofont-camera-alt"></i></a></li>
-                  </ol>
+                              <div class="-mob-share-close">取消</div>
+                           </div>
+                           <div class="-mob-share-ui-bg"></div>
+                        </li>
+                        <li>
+                           <!-- <a href="login-page.html"><span>登录</span></a> -->
+                           <a data-toggle="modal" data-target="#login" href="">登录<span
+                                 class="glyphicon glyphicon-log-in"></span></a>
+                        </li>
+                     </ul>
+                  </nav>
                </div>
             </div>
+            <div class="social-icon">
+               <ol class="header_social">
+                  <li class="header-dish">
+                     <p>菜品识别</p>
+                  </li>
+                  <li>
+                     <form class="camfunc" id="uploadPic" enctype="multipart/form-data">
+                        <input name="picture" id="searchPic" type="file" accept="image/*" />
+                        <label for="searchPic" class="searchPic"><a class="icofont-upload-alt"></a></label>
+                     </form>
+                  </li>
+                  <li><a href="#" target="_blank"><i class="icofont-camera-alt"></i></a></li>
+               </ol>
+            </div>
          </div>
-      </header>
-      <!--================ Our slider Section =================-->
-      <div class="slider-top slider1 hm4slider slider-2 slider-5">
-         <div class="tt-mslide-wrapper">
-            <div class="swiper-container" data-loop="1">
-               <div class="swiper-wrapper">
-                  <div class="swiper-slide">
-                     <div class="tt-mslide one">
-                        <div class="tt-mslide-entry slide1">
-                           <div class="container">
-                              <div class="row">
-                                 <div class="col-sm-12 col-md-12">
-                                    <div class="slider_content">
-                                       <div class="tt-mslide-title white text-animation" data-animation="zoomIn">
-                                          <h3>Maintain your body fitness</h3>
-                                          <p>It seems that only fragments of the original text remain in the Lorem
-                                             Ipsum texts used today. 
-                                          </p>
-                                       </div>
-                                       <div class="main-contc">
-                                          <div class="wrapper-inner-tab-backgrounds-first">
-                                             <div class="tt-mslide-title white text-animation" data-animation="zoomIn">
-                                                <a href="contactus.html">
-                                                   <div class="sim-button button8">
-                                                      <span>Contact Us</span>
-                                                   </div>
-                                                </a>
-                                             </div>
+      </div>
+   </header>
+   <!--================ Our slider Section =================-->
+   <div class="slider-top slider1 hm4slider slider-2 slider-5">
+      <div class="tt-mslide-wrapper">
+         <div class="swiper-container" data-loop="1">
+            <div class="swiper-wrapper">
+               <div class="swiper-slide">
+                  <div class="tt-mslide one">
+                     <div class="tt-mslide-entry slide1">
+                        <div class="container">
+                           <div class="row">
+                              <div class="col-sm-12 col-md-12">
+                                 <div class="slider_content">
+                                    <div class="tt-mslide-title white text-animation" data-animation="zoomIn">
+                                       <h3>Maintain your body fitness</h3>
+                                       <p>It seems that only fragments of the original text remain in the Lorem
+                                          Ipsum texts used today.
+                                       </p>
+                                    </div>
+                                    <div class="main-contc">
+                                       <div class="wrapper-inner-tab-backgrounds-first">
+                                          <div class="tt-mslide-title white text-animation" data-animation="zoomIn">
+                                             <a href="contactus.html">
+                                                <div class="sim-button button8">
+                                                   <span>Contact Us</span>
+                                                </div>
+                                             </a>
                                           </div>
                                        </div>
                                     </div>
@@ -176,28 +269,28 @@
                         </div>
                      </div>
                   </div>
-                  <div class="swiper-slide">
-                     <div class="tt-mslide two">
-                        <div class="tt-mslide-entry slide2">
-                           <div class="container">
-                              <div class="row">
-                                 <div class="col-sm-12 col-md-12">
-                                    <div class="slider_content">
-                                       <div class="tt-mslide-title white text-animation" data-animation="zoomIn">
-                                          <h3>Maintain your body fitness</h3>
-                                          <p>It seems that only fragments of the original text remain in the Lorem 
-                                             Ipsum texts used today. 
-                                          </p>
-                                       </div>
-                                       <div class="main-contc">
-                                          <div class="wrapper-inner-tab-backgrounds-first">
-                                             <div class="tt-mslide-title white text-animation" data-animation="zoomIn">
-                                                <a href="contactus.html">
-                                                   <div class="sim-button button8">
-                                                      <span>Contact Us</span>
-                                                   </div>
-                                                </a>
-                                             </div>
+               </div>
+               <div class="swiper-slide">
+                  <div class="tt-mslide two">
+                     <div class="tt-mslide-entry slide2">
+                        <div class="container">
+                           <div class="row">
+                              <div class="col-sm-12 col-md-12">
+                                 <div class="slider_content">
+                                    <div class="tt-mslide-title white text-animation" data-animation="zoomIn">
+                                       <h3>Maintain your body fitness</h3>
+                                       <p>It seems that only fragments of the original text remain in the Lorem
+                                          Ipsum texts used today.
+                                       </p>
+                                    </div>
+                                    <div class="main-contc">
+                                       <div class="wrapper-inner-tab-backgrounds-first">
+                                          <div class="tt-mslide-title white text-animation" data-animation="zoomIn">
+                                             <a href="contactus.html">
+                                                <div class="sim-button button8">
+                                                   <span>Contact Us</span>
+                                                </div>
+                                             </a>
                                           </div>
                                        </div>
                                     </div>
@@ -207,28 +300,28 @@
                         </div>
                      </div>
                   </div>
-                  <div class="swiper-slide">
-                     <div class="tt-mslide three">
-                        <div class="tt-mslide-entry slide3">
-                           <div class="container">
-                              <div class="row">
-                                 <div class="col-sm-12 col-md-12">
-                                    <div class="slider_content">
-                                       <div class="tt-mslide-title white text-animation" data-animation="zoomIn">
-                                          <h3>Maintain your body fitness</h3>
-                                          <p>It seems that only fragments of the original text remain in the Lorem 
-                                             Ipsum texts used today. 
-                                          </p>
-                                       </div>
-                                       <div class="main-contc">
-                                          <div class="wrapper-inner-tab-backgrounds-first">
-                                             <div class="tt-mslide-title white text-animation" data-animation="zoomIn">
-                                                <a href="contactus.html">
-                                                   <div class="sim-button button8">
-                                                      <span>Contact Us</span>
-                                                   </div>
-                                                </a>
-                                             </div>
+               </div>
+               <div class="swiper-slide">
+                  <div class="tt-mslide three">
+                     <div class="tt-mslide-entry slide3">
+                        <div class="container">
+                           <div class="row">
+                              <div class="col-sm-12 col-md-12">
+                                 <div class="slider_content">
+                                    <div class="tt-mslide-title white text-animation" data-animation="zoomIn">
+                                       <h3>Maintain your body fitness</h3>
+                                       <p>It seems that only fragments of the original text remain in the Lorem
+                                          Ipsum texts used today.
+                                       </p>
+                                    </div>
+                                    <div class="main-contc">
+                                       <div class="wrapper-inner-tab-backgrounds-first">
+                                          <div class="tt-mslide-title white text-animation" data-animation="zoomIn">
+                                             <a href="contactus.html">
+                                                <div class="sim-button button8">
+                                                   <span>Contact Us</span>
+                                                </div>
+                                             </a>
                                           </div>
                                        </div>
                                     </div>
@@ -238,717 +331,734 @@
                         </div>
                      </div>
                   </div>
-                  <div class="swiper-pagination fixed swiper-pagination-white"></div>
                </div>
+               <div class="swiper-pagination fixed swiper-pagination-white"></div>
             </div>
          </div>
       </div>
-      <!--================ Our slider Section end =================-->
-      <section class="we-offer cellpadding">
-         <div class="container">
-            <div class="row">
-               <div class="col-sm-12">
-                  <div class="Daily-Exercise">
-                     <h2>What <span>We Offer</span></h2>
-                     <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium 
-                        doloremque laudantium, totam rem aperiam.
-                     </p>
-                  </div>
-               </div>
-               <div class="Exercise">
-                  <div class="col-md-4 col-xs-12">
-                     <div class="radius-b">
-                        <div class="icon">
-                           <i class="icofont-gym"></i>
-                        </div>
-                        <div class="text">
-                           <h4 class="tt-sub-title"><a href="#">Daily Exercise</a></h4>
-                           <div class="simple-text">
-                              <p>Lorem ipsum dolor sit amet, consectetur
-                                 adipiscing elit. Praesent justo ipsum,
-                                 ullamcorper nec.
-                              </p>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-md-4 col-xs-12">
-                     <div class="radius-b">
-                        <div class="icon">
-                           <i class="icofont-users-alt-4"></i>
-                        </div>
-                        <div class="text">
-                           <h4 class="tt-sub-title">Qualified Trainers</h4>
-                           <div class="simple-text">
-                              <p>Lorem ipsum dolor sit amet, consectetur
-                                 adipiscing elit. Praesent justo ipsum,
-                                 ullamcorper nec.
-                              </p>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-md-4 col-xs-12">
-                     <div class="radius-b">
-                        <div class="icon">
-                           <i class="icofont-record"></i>
-                        </div>
-                        <div class="text">
-                           <h4 class="tt-sub-title">Low Prices</h4>
-                           <div class="simple-text">
-                              <p>Lorem ipsum dolor sit amet, consectetur
-                                 adipiscing elit. Praesent justo ipsum,
-                                 ullamcorper nec.
-                              </p>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </section>
-      <!--section-->
-      <section class="fitness-relationship">
-         <div class="container">
-            <div class="row">
-               <div class="col-sm-12">
-                  <div class="top-haeding">
-                     <h3> Fitness is like a relationship. You can’t cheat
-                        and expect it to work.
-                     </h3>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </section>
-      <!--section-->
-      <div class="topclass cellpadding topclass-5">
-         <div class="container">
-            <div class="row">
-               <div class="col-sm-12 col-md-12">
-                  <div class="classess">
-                     <h2>Top<span>  Classes</span></h2>
-                     <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium 
-                        doloremque laudantium, totam rem aperiam.
-                     </p>
-                  </div>
-                  <!--classes-->
-               </div>
-            </div>
-            <!--row-->
-            <iframe src="//player.bilibili.com/player.html?aid=24622211&cid=41374014&page=1" class="index-video" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-         </div>
-         <!--container-->
-      </div>
-      <!--topclass-->
-      <section class="stripes-1 cellpadding stripes-2 stripes-3">
-         <div class="strip_05">
-            <div class="container">
-               <div class="row">
-                  <div class="col-sm-12">
-                     <div class="col-sm-3 col-xs-12">
-                        <div class="border-left22">
-                           <h2>150</h2>
-                           <h5>Workout Sesisons</h5>
-                        </div>
-                     </div>
-                     <div class="col-sm-3 col-xs-12">
-                        <div class="border-left22">
-                           <h2>46</h2>
-                           <h5>Training Programs</h5>
-                        </div>
-                     </div>
-                     <div class="col-sm-3 col-xs-12">
-                        <div class="border-left22">
-                           <h2>305</h2>
-                           <h5>Fitness Degrees</h5>
-                        </div>
-                     </div>
-                     <div class="col-sm-3 col-xs-12">
-                        <div class="border-left22 last">
-                           <h2>350</h2>
-                           <h5>Happy Customers</h5>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </section>
-      <div class="trainers cellpadding trainers-2">
-         <div class="container">
-            <div class="row">
-               <div class="col-sm-12 col-md-12">
-                  <div class="main-headings">
-                     <h2>Our <span>Trainers</span></h2>
-                     <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis<br>
-                        praesentium voluptatum deleniti atque 
-                     </p>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <div class="container">
-            <div class="row">
-               <div class="owl-carousel owl-carousel17 owl-theme">
-                  <div class="item">
-                     <div class="champian">
-                        <div class="champian1">
-                           <img src="images/about-images/Frank-Chapman.jpg" alt="Frank Chapman" class="img-responsive">
-                           <div class="overlay">
-                              <div class="text">
-                                 <a href="#"><i class="fa fa-facebook-f"></i></a>
-                                 <a href="#"><i class="fa fa-twitter"></i></a>
-                                 <a href="#"><i class="fa fa-linkedin"></i></a>
-                                 <a href="#"><i class="fa fa-instagram"></i></a>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="box-shadows">
-                           <h4>Frank Chapman</h4>
-                           <h5>Male Fitness Coach</h5>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="item">
-                     <div class="champian">
-                        <div class="champian1">
-                           <img src="images/about-images/Frank-Chapman-2.jpg" alt="Frank Chapman" class="img-responsive">
-                           <div class="overlay">
-                              <div class="text">
-                                 <a href="#"><i class="fa fa-facebook-f"></i></a>
-                                 <a href="#"><i class="fa fa-twitter"></i></a>
-                                 <a href="#"><i class="fa fa-linkedin"></i></a>
-                                 <a href="#"><i class="fa fa-instagram"></i></a>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="box-shadows">
-                           <h4>Thomas Clark</h4>
-                           <h5>Male Fitness Coach</h5>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="item">
-                     <div class="champian">
-                        <div class="champian1">
-                           <img src="images/about-images/Frank-Chapman-3.jpg" alt="Frank Chapman" class="img-responsive">
-                           <div class="overlay">
-                              <div class="text">
-                                 <a href="#"><i class="fa fa-facebook-f"></i></a>
-                                 <a href="#"><i class="fa fa-twitter"></i></a>
-                                 <a href="#"><i class="fa fa-linkedin"></i></a>
-                                 <a href="#"><i class="fa fa-instagram"></i></a>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="box-shadows">
-                           <h4>Warren Harris</h4>
-                           <h5>Male Fitness Coach</h5>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="item">
-                     <div class="champian">
-                        <div class="champian1">
-                           <figure>
-                              <img src="images/about-images/Frank-Chapman2.jpg" alt="Frank Chapman" class="img-responsive">
-                              <div class="overlay">
-                                 <div class="text">
-                                    <a href="#"><i class="fa fa-facebook-f"></i></a>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-linkedin"></i></a>
-                                    <a href="#"><i class="fa fa-instagram"></i></a>
-                                 </div>
-                              </div>
-                           </figure>
-                        </div>
-                        <div class="box-shadows">
-                           <h4>William Hill</h4>
-                           <h5>Male Fitness Coach</h5>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-      <!--================ Client Say Section  =================-->
-      <div class="client_say_05 cellpadding swiper-slider-5">
-         <div class="container">
-            <div class="tt-block">
-               <!-- TT-TITLE -->
-               <h3>Success <span>Stories</span></h3>
-               <div class="border-bb"></div>
-               <!-- TT-TESTIMONIAL -->
-               <div class="swiper-container" data-space-between="30" data-breakpoints="1" data-xs-slides="1" data-sm-slides="3" data-md-slides="3" data-slides-per-view="3" id="swiper-unique-id-3">
-                  <div class="swiper-wrapper clearfix">
-                     <div class="swiper-slide">
-                        <div class="tt-testimonial">
-                           <div class="image">
-                              <img src="images/index-2/1.png" alt="Image 1" class="img-responsive">
-                           </div>
-                           <div class="tt-testimonial-info">
-                              <div class="headings">
-                                 <h2>Garry Thomas</h2>
-                              </div>
-                              <div class="icon">
-                                 <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i><i class="fa fa-star-half-o"></i>
-                              </div>
-                              <div class="simple-text">
-                                 <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, 
-                                    lorem quis bibendum auctor, nisi elit consequat ipsum
-                                 </p>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="swiper-slide">
-                        <div class="tt-testimonial">
-                           <div class="image">
-                              <img src="images/index-2/2.png" alt="Image 1" class="img-responsive">
-                           </div>
-                           <div class="tt-testimonial-info">
-                              <div class="headings">
-                                 <h2>Rachael Philip</h2>
-                              </div>
-                              <div class="icon">
-                                 <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i><i class="fa fa-star-half-o"></i>
-                              </div>
-                              <div class="simple-text">
-                                 <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, 
-                                    lorem quis bibendum auctor, nisi elit consequat ipsum
-                                 </p>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="swiper-slide">
-                        <div class="tt-testimonial">
-                           <div class="image">
-                              <img src="images/index-2/4.png" alt="Image 1" class="img-responsive">
-                           </div>
-                           <div class="tt-testimonial-info">
-                              <div class="headings">
-                                 <h2>Richard Young</h2>
-                              </div>
-                              <div class="icon">
-                                 <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i><i class="fa fa-star-half-o"></i>
-                              </div>
-                              <div class="simple-text">
-                                 <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, 
-                                    lorem quis bibendum auctor, nisi elit consequat ipsum
-                                 </p>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="swiper-slide">
-                        <div class="tt-testimonial">
-                           <div class="image">
-                              <img src="images/index-2/3.png" alt="Image 1" class="img-responsive">
-                           </div>
-                           <div class="tt-testimonial-info">
-                              <div class="headings">
-                                 <h2>Rachael Philip</h2>
-                              </div>
-                              <div class="icon">
-                                 <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i><i class="fa fa-star-half-o"></i><i class="fa fa-star-half-o"></i>
-                              </div>
-                              <div class="simple-text">
-                                 <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, 
-                                    lorem quis bibendum auctor, nisi elit consequat ipsum
-                                 </p>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="swiper-slide">
-                        <div class="tt-testimonial">
-                           <div class="image">
-                              <img src="images/index-2/2.png" alt="Image 1" class="img-responsive">
-                           </div>
-                           <div class="tt-testimonial-info">
-                              <div class="headings">
-                                 <h2>Rachael Philip</h2>
-                              </div>
-                              <div class="icon">
-                                 <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i><i class="fa fa-star-half-o"></i>
-                              </div>
-                              <div class="simple-text">
-                                 <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, 
-                                    lorem quis bibendum auctor, nisi elit consequat ipsum
-                                 </p>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="swiper-slide">
-                        <div class="tt-testimonial">
-                           <div class="image">
-                              <img src="images/index-2/4.png" alt="Image 1" class="img-responsive">
-                           </div>
-                           <div class="tt-testimonial-info">
-                              <div class="headings">
-                                 <h2>Richard Young</h2>
-                              </div>
-                              <div class="icon">
-                                 <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i><i class="fa fa-star-half-o"></i>
-                              </div>
-                              <div class="simple-text">
-                                 <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, 
-                                    lorem quis bibendum auctor, nisi elit consequat ipsum
-                                 </p>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="swiper-slide">
-                        <div class="tt-testimonial">
-                           <div class="image">
-                              <img src="images/index-2/2.png" alt="Image 1" class="img-responsive">
-                           </div>
-                           <div class="tt-testimonial-info">
-                              <div class="headings">
-                                 <h2>Rachael Philip</h2>
-                              </div>
-                              <div class="icon">
-                                 <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i><i class="fa fa-star-half-o"></i>
-                              </div>
-                              <div class="simple-text">
-                                 <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, 
-                                    lorem quis bibendum auctor, nisi elit consequat ipsum
-                                 </p>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="swiper-pagination fixed swiper-pagination-white"></div>
-               </div>
-            </div>
-         </div>
-      </div>
-      <!--================ End Client Say Section  =================-->
-      <section class="your-pricing cellpadding">
-         <div class="container">
-            <div class="row">
-               <div class="col-sm-12 col-md-12">
-                  <div class="classes">
-                     <h2>Our <span> Pricing</span></h2>
-                     <p>Vivamus ac ultrices diam, vitae accumsan tellus. Integer sollicitudin vulputate
-                        lacus, congue vulputate nisl eleifend in.
-                     </p>
-                  </div>
-                  <!--classes-->
-               </div>
-            </div>
-            <div class="dedecate">
-               <div class="row">
-                  <div class="col-sm-4 col-md-4">
-                     <div class="basics">
-                        <div class="basic">
-                           <h4>Basic</h4>
-                        </div>
-                        <ul>
-                           <li><i class="fa fa-check"></i>Dedicated Trainer Allocated</li>
-                           <li><i class="fa fa-check"></i>Health and Fitness Tips</li>
-                           <li><i class="fa fa-check"></i>Personal Health Solution</li>
-                           <li><i class="fa fa-check"></i>Morning and Evening Batches</li>
-                        </ul>
-                     </div>
-                     <div class="parmonth">
-                        <h3>$10<span>Per Month</span></h3>
-                        <a href="appointment.html"><button type="button" class="btn btn-defaults sim-button button8"><span>Subscribe</span></button></a>
-                     </div>
-                  </div>
-                  <div class="col-sm-4 col-md-4">
-                     <div class="basics ">
-                        <div class="basic hover-1">
-                           <h4>Advanced</h4>
-                        </div>
-                        <ul>
-                           <li><i class="fa fa-check"></i>Dedicated Trainer Allocated</li>
-                           <li><i class="fa fa-check"></i>Health and Fitness Tips</li>
-                           <li><i class="fa fa-check"></i>Personal Health Solution</li>
-                           <li><i class="fa fa-check"></i>Morning and Evening Batches</li>
-                        </ul>
-                     </div>
-                     <div class="parmonth hover-2">
-                        <h3>$20<span>Per Month</span></h3>
-                        <a href="appointment.html"><button type="button" class="btn btn-defaults sim-button button8"><span>Subscribe</span></button></a>
-                     </div>
-                  </div>
-                  <div class="col-sm-4 col-md-4">
-                     <div class="basics">
-                        <div class="basic">
-                           <h4>Ultimate</h4>
-                        </div>
-                        <ul>
-                           <li><i class="fa fa-check"></i>Dedicated Trainer Allocated</li>
-                           <li><i class="fa fa-check"></i>Health and Fitness Tips</li>
-                           <li><i class="fa fa-check"></i>Personal Health Solution</li>
-                           <li><i class="fa fa-check"></i>Morning and Evening Batches</li>
-                        </ul>
-                     </div>
-                     <div class="parmonth">
-                        <h3>$30<span>Per Month</span></h3>
-                        <a href="appointment.html"><button type="button" class="btn btn-defaults sim-button button8"><span>Subscribe</span></button></a>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </section>
-      <!--section-->
-      <!--================ our-gallery-05 Section start =================-->	
-      <section class="our-gallery-05 cellpadding">
+   </div>
+   <!--================ Our slider Section end =================-->
+   <section class="we-offer cellpadding">
+      <div class="container">
          <div class="row">
             <div class="col-sm-12">
-               <div class="gallery-heading">
-                  <h2>Our <span>Gallery</span></h2>
-                  <p>Vivamus ac ultrices diam, vitae accumsan tellus. Integer sollicitudin vulputate<br>
-                     lacus, congue vulputate nisl eleifend in.
+               <div class="Daily-Exercise">
+                  <h2>What <span>We Offer</span></h2>
+                  <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+                     doloremque laudantium, totam rem aperiam.
+                  </p>
+               </div>
+            </div>
+            <div class="Exercise">
+               <div class="col-md-4 col-xs-12">
+                  <div class="radius-b">
+                     <div class="icon">
+                        <i class="icofont-gym"></i>
+                     </div>
+                     <div class="text">
+                        <h4 class="tt-sub-title"><a href="#">Daily Exercise</a></h4>
+                        <div class="simple-text">
+                           <p>Lorem ipsum dolor sit amet, consectetur
+                              adipiscing elit. Praesent justo ipsum,
+                              ullamcorper nec.
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-4 col-xs-12">
+                  <div class="radius-b">
+                     <div class="icon">
+                        <i class="icofont-users-alt-4"></i>
+                     </div>
+                     <div class="text">
+                        <h4 class="tt-sub-title">Qualified Trainers</h4>
+                        <div class="simple-text">
+                           <p>Lorem ipsum dolor sit amet, consectetur
+                              adipiscing elit. Praesent justo ipsum,
+                              ullamcorper nec.
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-4 col-xs-12">
+                  <div class="radius-b">
+                     <div class="icon">
+                        <i class="icofont-record"></i>
+                     </div>
+                     <div class="text">
+                        <h4 class="tt-sub-title">Low Prices</h4>
+                        <div class="simple-text">
+                           <p>Lorem ipsum dolor sit amet, consectetur
+                              adipiscing elit. Praesent justo ipsum,
+                              ullamcorper nec.
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+   <!--section-->
+   <section class="fitness-relationship">
+      <div class="container">
+         <div class="row">
+            <div class="col-sm-12">
+               <div class="top-haeding">
+                  <h3> Fitness is like a relationship. You can’t cheat
+                     and expect it to work.
+                  </h3>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+   <!--section-->
+   <div class="topclass cellpadding topclass-5">
+      <div class="container">
+         <div class="row">
+            <div class="col-sm-12 col-md-12">
+               <div class="classess">
+                  <h2>Top<span> Classes</span></h2>
+                  <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+                     doloremque laudantium, totam rem aperiam.
+                  </p>
+               </div>
+               <!--classes-->
+            </div>
+         </div>
+         <!--row-->
+         <iframe src="//player.bilibili.com/player.html?aid=24622211&cid=41374014&page=1" class="index-video"
+            scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+      </div>
+      <!--container-->
+   </div>
+   <!--topclass-->
+   <section class="stripes-1 cellpadding stripes-2 stripes-3">
+      <div class="strip_05">
+         <div class="container">
+            <div class="row">
+               <div class="col-sm-12">
+                  <div class="col-sm-3 col-xs-12">
+                     <div class="border-left22">
+                        <h2>150</h2>
+                        <h5>Workout Sesisons</h5>
+                     </div>
+                  </div>
+                  <div class="col-sm-3 col-xs-12">
+                     <div class="border-left22">
+                        <h2>46</h2>
+                        <h5>Training Programs</h5>
+                     </div>
+                  </div>
+                  <div class="col-sm-3 col-xs-12">
+                     <div class="border-left22">
+                        <h2>305</h2>
+                        <h5>Fitness Degrees</h5>
+                     </div>
+                  </div>
+                  <div class="col-sm-3 col-xs-12">
+                     <div class="border-left22 last">
+                        <h2>350</h2>
+                        <h5>Happy Customers</h5>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+   <div class="trainers cellpadding trainers-2">
+      <div class="container">
+         <div class="row">
+            <div class="col-sm-12 col-md-12">
+               <div class="main-headings">
+                  <h2>Our <span>Trainers</span></h2>
+                  <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis<br>
+                     praesentium voluptatum deleniti atque
                   </p>
                </div>
             </div>
          </div>
+      </div>
+      <div class="container">
          <div class="row">
-            <div class="owl-carousel owl-carousel15 owl-theme">
+            <div class="owl-carousel owl-carousel17 owl-theme">
                <div class="item">
-                  <div class="gallery-crousal">
-                     <img src="images/home-5/1.jpg" alt="" class="img-responsive">
+                  <div class="champian">
+                     <div class="champian1">
+                        <img src="images/about-images/Frank-Chapman.jpg" alt="Frank Chapman" class="img-responsive">
+                        <div class="overlay">
+                           <div class="text">
+                              <a href="#"><i class="fa fa-facebook-f"></i></a>
+                              <a href="#"><i class="fa fa-twitter"></i></a>
+                              <a href="#"><i class="fa fa-linkedin"></i></a>
+                              <a href="#"><i class="fa fa-instagram"></i></a>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="box-shadows">
+                        <h4>Frank Chapman</h4>
+                        <h5>Male Fitness Coach</h5>
+                     </div>
                   </div>
                </div>
                <div class="item">
-                  <div class="gallery-crousal">
-                     <img src="images/home-5/2.jpg" alt="" class="img-responsive">
+                  <div class="champian">
+                     <div class="champian1">
+                        <img src="images/about-images/Frank-Chapman-2.jpg" alt="Frank Chapman" class="img-responsive">
+                        <div class="overlay">
+                           <div class="text">
+                              <a href="#"><i class="fa fa-facebook-f"></i></a>
+                              <a href="#"><i class="fa fa-twitter"></i></a>
+                              <a href="#"><i class="fa fa-linkedin"></i></a>
+                              <a href="#"><i class="fa fa-instagram"></i></a>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="box-shadows">
+                        <h4>Thomas Clark</h4>
+                        <h5>Male Fitness Coach</h5>
+                     </div>
                   </div>
                </div>
                <div class="item">
-                  <div class="gallery-crousal">
-                     <img src="images/home-5/3.jpg" alt="" class="img-responsive">
+                  <div class="champian">
+                     <div class="champian1">
+                        <img src="images/about-images/Frank-Chapman-3.jpg" alt="Frank Chapman" class="img-responsive">
+                        <div class="overlay">
+                           <div class="text">
+                              <a href="#"><i class="fa fa-facebook-f"></i></a>
+                              <a href="#"><i class="fa fa-twitter"></i></a>
+                              <a href="#"><i class="fa fa-linkedin"></i></a>
+                              <a href="#"><i class="fa fa-instagram"></i></a>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="box-shadows">
+                        <h4>Warren Harris</h4>
+                        <h5>Male Fitness Coach</h5>
+                     </div>
                   </div>
                </div>
                <div class="item">
-                  <div class="gallery-crousal">
-                     <img src="images/home-5/4.jpg" alt="" class="img-responsive">
-                  </div>
-               </div>
-               <div class="item">
-                  <div class="gallery-crousal">
-                     <img src="images/home-5/5.jpg" alt="" class="img-responsive">
+                  <div class="champian">
+                     <div class="champian1">
+                        <figure>
+                           <img src="images/about-images/Frank-Chapman2.jpg" alt="Frank Chapman" class="img-responsive">
+                           <div class="overlay">
+                              <div class="text">
+                                 <a href="#"><i class="fa fa-facebook-f"></i></a>
+                                 <a href="#"><i class="fa fa-twitter"></i></a>
+                                 <a href="#"><i class="fa fa-linkedin"></i></a>
+                                 <a href="#"><i class="fa fa-instagram"></i></a>
+                              </div>
+                           </div>
+                        </figure>
+                     </div>
+                     <div class="box-shadows">
+                        <h4>William Hill</h4>
+                        <h5>Male Fitness Coach</h5>
+                     </div>
                   </div>
                </div>
             </div>
          </div>
-      </section>
-      <!---crousal-gallery-->
-      <!--================latest-say Section start=================-->
-      <div class="latest_news cellpadding latest-news">
-         <div class="container">
-            <div class="numquam">
-               <h2>最新 <span>健康新闻</span></h2>
+      </div>
+   </div>
+   <!--================ Client Say Section  =================-->
+   <div class="client_say_05 cellpadding swiper-slider-5">
+      <div class="container">
+         <div class="tt-block">
+            <!-- TT-TITLE -->
+            <h3>Success <span>Stories</span></h3>
+            <div class="border-bb"></div>
+            <!-- TT-TESTIMONIAL -->
+            <div class="swiper-container" data-space-between="30" data-breakpoints="1" data-xs-slides="1"
+               data-sm-slides="3" data-md-slides="3" data-slides-per-view="3" id="swiper-unique-id-3">
+               <div class="swiper-wrapper clearfix">
+                  <div class="swiper-slide">
+                     <div class="tt-testimonial">
+                        <div class="image">
+                           <img src="images/index-2/1.png" alt="Image 1" class="img-responsive">
+                        </div>
+                        <div class="tt-testimonial-info">
+                           <div class="headings">
+                              <h2>Garry Thomas</h2>
+                           </div>
+                           <div class="icon">
+                              <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                 class="fa fa-star-half-o"></i><i class="fa fa-star-half-o"></i>
+                           </div>
+                           <div class="simple-text">
+                              <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,
+                                 lorem quis bibendum auctor, nisi elit consequat ipsum
+                              </p>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="swiper-slide">
+                     <div class="tt-testimonial">
+                        <div class="image">
+                           <img src="images/index-2/2.png" alt="Image 1" class="img-responsive">
+                        </div>
+                        <div class="tt-testimonial-info">
+                           <div class="headings">
+                              <h2>Rachael Philip</h2>
+                           </div>
+                           <div class="icon">
+                              <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                 class="fa fa-star-half-o"></i><i class="fa fa-star-half-o"></i>
+                           </div>
+                           <div class="simple-text">
+                              <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,
+                                 lorem quis bibendum auctor, nisi elit consequat ipsum
+                              </p>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="swiper-slide">
+                     <div class="tt-testimonial">
+                        <div class="image">
+                           <img src="images/index-2/4.png" alt="Image 1" class="img-responsive">
+                        </div>
+                        <div class="tt-testimonial-info">
+                           <div class="headings">
+                              <h2>Richard Young</h2>
+                           </div>
+                           <div class="icon">
+                              <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                 class="fa fa-star-half-o"></i><i class="fa fa-star-half-o"></i>
+                           </div>
+                           <div class="simple-text">
+                              <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,
+                                 lorem quis bibendum auctor, nisi elit consequat ipsum
+                              </p>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="swiper-slide">
+                     <div class="tt-testimonial">
+                        <div class="image">
+                           <img src="images/index-2/3.png" alt="Image 1" class="img-responsive">
+                        </div>
+                        <div class="tt-testimonial-info">
+                           <div class="headings">
+                              <h2>Rachael Philip</h2>
+                           </div>
+                           <div class="icon">
+                              <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                 class="fa fa-star-half-o"></i><i class="fa fa-star-half-o"></i><i
+                                 class="fa fa-star-half-o"></i>
+                           </div>
+                           <div class="simple-text">
+                              <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,
+                                 lorem quis bibendum auctor, nisi elit consequat ipsum
+                              </p>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="swiper-slide">
+                     <div class="tt-testimonial">
+                        <div class="image">
+                           <img src="images/index-2/2.png" alt="Image 1" class="img-responsive">
+                        </div>
+                        <div class="tt-testimonial-info">
+                           <div class="headings">
+                              <h2>Rachael Philip</h2>
+                           </div>
+                           <div class="icon">
+                              <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                 class="fa fa-star-half-o"></i><i class="fa fa-star-half-o"></i>
+                           </div>
+                           <div class="simple-text">
+                              <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,
+                                 lorem quis bibendum auctor, nisi elit consequat ipsum
+                              </p>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="swiper-slide">
+                     <div class="tt-testimonial">
+                        <div class="image">
+                           <img src="images/index-2/4.png" alt="Image 1" class="img-responsive">
+                        </div>
+                        <div class="tt-testimonial-info">
+                           <div class="headings">
+                              <h2>Richard Young</h2>
+                           </div>
+                           <div class="icon">
+                              <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                 class="fa fa-star-half-o"></i><i class="fa fa-star-half-o"></i>
+                           </div>
+                           <div class="simple-text">
+                              <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,
+                                 lorem quis bibendum auctor, nisi elit consequat ipsum
+                              </p>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="swiper-slide">
+                     <div class="tt-testimonial">
+                        <div class="image">
+                           <img src="images/index-2/2.png" alt="Image 1" class="img-responsive">
+                        </div>
+                        <div class="tt-testimonial-info">
+                           <div class="headings">
+                              <h2>Rachael Philip</h2>
+                           </div>
+                           <div class="icon">
+                              <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                 class="fa fa-star-half-o"></i><i class="fa fa-star-half-o"></i>
+                           </div>
+                           <div class="simple-text">
+                              <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,
+                                 lorem quis bibendum auctor, nisi elit consequat ipsum
+                              </p>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="swiper-pagination fixed swiper-pagination-white"></div>
             </div>
-            <div class="empty-space lg-50 sm-30 xs-30"></div>
+         </div>
+      </div>
+   </div>
+   <!--================ End Client Say Section  =================-->
+   <section class="your-pricing cellpadding">
+      <div class="container">
+         <div class="row">
+            <div class="col-sm-12 col-md-12">
+               <div class="classes">
+                  <h2>Our <span> Pricing</span></h2>
+                  <p>Vivamus ac ultrices diam, vitae accumsan tellus. Integer sollicitudin vulputate
+                     lacus, congue vulputate nisl eleifend in.
+                  </p>
+               </div>
+               <!--classes-->
+            </div>
+         </div>
+         <div class="dedecate">
             <div class="row">
-               <div class="col-md-4 col-sm-6 col-xs-9">
-                  <div class="news_box_item">
-                     <div class="news_image">
-                        <div class="image-opacity-on-hover image-zoom-on-hover">
-                           <img src="images/Running-1.jpg" alt="" class="img-responsive news1">
-                        </div>
-                        <div class="datetime">
-                           <h3>07</h3>
-                           <span>Dec</span>
-                        </div>
+               <div class="col-sm-4 col-md-4">
+                  <div class="basics">
+                     <div class="basic">
+                        <h4>Basic</h4>
                      </div>
-                     <div class="content">
-                        <h3 class="tt-news-title news1">Starting new session of body building this summer</h3>
-                        <p class="news1">Sed ut perspiciatis unde omnis iste natus error sit 
-                           voluptatem accusa nt ium doloremque laudantium totam rem aperiam
-                        </p>
-                        <p><a href="#" class="readmore news1">Read more</a></p>
-                     </div>
-                  </div>
-                  <div class="empty-space xs-30 sm-30"></div>
-               </div>
-               <div class="col-md-4 col-sm-6 col-xs-9">
-                  <div class="news_box_item news2">
-                     <div class="news_image">
-                        <div class="image-opacity-on-hover image-zoom-on-hover">
-                           <img src="images/Running-2.jpg" alt="" class="img-responsive news2">
-                        </div>
-                        <div class="datetime">
-                           <h3>08</h3>
-                           <span>Dec</span>
-                        </div>
-                     </div>
-                     <div class="content">
-                        <h3 class="tt-news-title news2">Many people believe they must adopt a rigorous exercise</h3>
-                        <p class="news2">Sed ut perspiciatis unde omnis iste natus error sit 
-                           voluptatem accusa nt ium doloremque laudantium totam rem aperiam
-                        </p>
-                        <p><a href="#" class="readmore news2">Read more</a></p>
-                     </div>
-                  </div>
-                  <div class="empty-space xs-30 sm-30"></div>
-               </div>
-               <div class="col-sm-6 col-md-4 col-xs-9">
-                  <div class="space">
-                     <div class="empty-space marg-sm-b30"></div>
-                     <ul class="tt-archive">
-                        <li>
-                           <a class="tt-archive-title news3" href="#">Chocolate milk better than sports drinks for post</a>
-                           <div class="tt-archive-bottom">
-                              <span>4 days ago</span>
-                           </div>
-                        </li>
-                        <li>
-                           <a class="tt-archive-title news4" href="#">Breakfast Is Dieter's Most Important Meal.</a>
-                           <div class="tt-archive-bottom">
-                              <span>4 days ago</span>
-                           </div>
-                        </li>
-                        <li>
-                           <a class="tt-archive-title news5" href="#">Exercise Can Help Beat Cocaine Addiction.</a>
-                           <div class="tt-archive-bottom">
-                              <span>4 days ago</span>
-                           </div>
-                        </li>
-                        <li>
-                           <a class="tt-archive-all" href="#">Read All News</a>
-                        </li>
+                     <ul>
+                        <li><i class="fa fa-check"></i>Dedicated Trainer Allocated</li>
+                        <li><i class="fa fa-check"></i>Health and Fitness Tips</li>
+                        <li><i class="fa fa-check"></i>Personal Health Solution</li>
+                        <li><i class="fa fa-check"></i>Morning and Evening Batches</li>
                      </ul>
-                     <div class="empty-space xs-30 sm-30"></div>
+                  </div>
+                  <div class="parmonth">
+                     <h3>$10<span>Per Month</span></h3>
+                     <a href="appointment.html"><button type="button"
+                           class="btn btn-defaults sim-button button8"><span>Subscribe</span></button></a>
+                  </div>
+               </div>
+               <div class="col-sm-4 col-md-4">
+                  <div class="basics ">
+                     <div class="basic hover-1">
+                        <h4>Advanced</h4>
+                     </div>
+                     <ul>
+                        <li><i class="fa fa-check"></i>Dedicated Trainer Allocated</li>
+                        <li><i class="fa fa-check"></i>Health and Fitness Tips</li>
+                        <li><i class="fa fa-check"></i>Personal Health Solution</li>
+                        <li><i class="fa fa-check"></i>Morning and Evening Batches</li>
+                     </ul>
+                  </div>
+                  <div class="parmonth hover-2">
+                     <h3>$20<span>Per Month</span></h3>
+                     <a href="appointment.html"><button type="button"
+                           class="btn btn-defaults sim-button button8"><span>Subscribe</span></button></a>
+                  </div>
+               </div>
+               <div class="col-sm-4 col-md-4">
+                  <div class="basics">
+                     <div class="basic">
+                        <h4>Ultimate</h4>
+                     </div>
+                     <ul>
+                        <li><i class="fa fa-check"></i>Dedicated Trainer Allocated</li>
+                        <li><i class="fa fa-check"></i>Health and Fitness Tips</li>
+                        <li><i class="fa fa-check"></i>Personal Health Solution</li>
+                        <li><i class="fa fa-check"></i>Morning and Evening Batches</li>
+                     </ul>
+                  </div>
+                  <div class="parmonth">
+                     <h3>$30<span>Per Month</span></h3>
+                     <a href="appointment.html"><button type="button"
+                           class="btn btn-defaults sim-button button8"><span>Subscribe</span></button></a>
                   </div>
                </div>
             </div>
          </div>
       </div>
-      <!--================latest-say Section end=================-->
-      <div class="tz-newsletter tz-newsletter-type-1">
+   </section>
+   <!--section-->
+   <!--================ our-gallery-05 Section start =================-->
+   <section class="our-gallery-05 cellpadding">
+      <div class="row">
+         <div class="col-sm-12">
+            <div class="gallery-heading">
+               <h2>Our <span>Gallery</span></h2>
+               <p>Vivamus ac ultrices diam, vitae accumsan tellus. Integer sollicitudin vulputate<br>
+                  lacus, congue vulputate nisl eleifend in.
+               </p>
+            </div>
+         </div>
+      </div>
+      <div class="row">
+         <div class="owl-carousel owl-carousel15 owl-theme">
+            <div class="item">
+               <div class="gallery-crousal">
+                  <img src="images/home-5/1.jpg" alt="" class="img-responsive">
+               </div>
+            </div>
+            <div class="item">
+               <div class="gallery-crousal">
+                  <img src="images/home-5/2.jpg" alt="" class="img-responsive">
+               </div>
+            </div>
+            <div class="item">
+               <div class="gallery-crousal">
+                  <img src="images/home-5/3.jpg" alt="" class="img-responsive">
+               </div>
+            </div>
+            <div class="item">
+               <div class="gallery-crousal">
+                  <img src="images/home-5/4.jpg" alt="" class="img-responsive">
+               </div>
+            </div>
+            <div class="item">
+               <div class="gallery-crousal">
+                  <img src="images/home-5/5.jpg" alt="" class="img-responsive">
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+   <!---crousal-gallery-->
+   <!--================latest-say Section start=================-->
+   <div class="latest_news cellpadding latest-news">
+      <div class="container">
+         <div class="numquam">
+            <h2>最新 <span>健康新闻</span></h2>
+         </div>
+         <div class="empty-space lg-50 sm-30 xs-30"></div>
+         <div class="row">
+            <div class="col-md-4 col-sm-6 col-xs-9">
+               <div class="news_box_item">
+                  <div class="news_image">
+                     <div class="image-opacity-on-hover image-zoom-on-hover">
+                        <img src="images/Running-1.jpg" alt="" class="img-responsive news1">
+                     </div>
+                     <div class="datetime">
+                        <h3>07</h3>
+                        <span>Dec</span>
+                     </div>
+                  </div>
+                  <div class="content">
+                     <h3 class="tt-news-title news1">Starting new session of body building this summer</h3>
+                     <p class="news1">Sed ut perspiciatis unde omnis iste natus error sit
+                        voluptatem accusa nt ium doloremque laudantium totam rem aperiam
+                     </p>
+                     <p><a href="#" class="readmore news1">Read more</a></p>
+                  </div>
+               </div>
+               <div class="empty-space xs-30 sm-30"></div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-9">
+               <div class="news_box_item news2">
+                  <div class="news_image">
+                     <div class="image-opacity-on-hover image-zoom-on-hover">
+                        <img src="images/Running-2.jpg" alt="" class="img-responsive news2">
+                     </div>
+                     <div class="datetime">
+                        <h3>08</h3>
+                        <span>Dec</span>
+                     </div>
+                  </div>
+                  <div class="content">
+                     <h3 class="tt-news-title news2">Many people believe they must adopt a rigorous exercise</h3>
+                     <p class="news2">Sed ut perspiciatis unde omnis iste natus error sit
+                        voluptatem accusa nt ium doloremque laudantium totam rem aperiam
+                     </p>
+                     <p><a href="#" class="readmore news2">Read more</a></p>
+                  </div>
+               </div>
+               <div class="empty-space xs-30 sm-30"></div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-xs-9">
+               <div class="space">
+                  <div class="empty-space marg-sm-b30"></div>
+                  <ul class="tt-archive">
+                     <li>
+                        <a class="tt-archive-title news3" href="#">Chocolate milk better than sports drinks for post</a>
+                        <div class="tt-archive-bottom">
+                           <span>4 days ago</span>
+                        </div>
+                     </li>
+                     <li>
+                        <a class="tt-archive-title news4" href="#">Breakfast Is Dieter's Most Important Meal.</a>
+                        <div class="tt-archive-bottom">
+                           <span>4 days ago</span>
+                        </div>
+                     </li>
+                     <li>
+                        <a class="tt-archive-title news5" href="#">Exercise Can Help Beat Cocaine Addiction.</a>
+                        <div class="tt-archive-bottom">
+                           <span>4 days ago</span>
+                        </div>
+                     </li>
+                     <li>
+                        <a class="tt-archive-all" href="#">Read All News</a>
+                     </li>
+                  </ul>
+                  <div class="empty-space xs-30 sm-30"></div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!--================latest-say Section end=================-->
+   <div class="tz-newsletter tz-newsletter-type-1">
+      <div class="container">
+         <div class="row">
+            <div class="newsletter-left col-md-6">
+               <div class="news-icon">
+                  <i class="fa fa-paper-plane"></i>
+               </div>
+               <div class="news-content">
+                  <h3 class="new-title">
+                     Subscribe our newsletter
+                  </h3>
+                  <p>Register now! We will send you best offers for your trip. </p>
+               </div>
+            </div>
+            <div class="newsletter-right col-md-6">
+               <form class="newsletter">
+                  <div class="tnp-field tnp-field-email"><label>email</label>
+                     <input class="tnp-email" type="email" name="ne" value="" placeholder="Enter Your Email" required>
+                     <button type="submit"
+                        class="btn btn-success sim-button button8 btn-effect "><span>Submit</span></button>
+                  </div>
+                  <div class="tnp-field tnp-field-button">
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!--================ Our footer Section start=================-->
+   <footer class="xyz">
+      <div class="footer cellpadding">
          <div class="container">
             <div class="row">
-               <div class="newsletter-left col-md-6">
-                  <div class="news-icon">
-                     <i class="fa fa-paper-plane"></i>
+               <div class="t-footer">
+                  <div class="col-sm-4 col-sm-4">
+                     <div class="t-footer">
+                        <img src="images/footer-logo.png" class="img-responsive" alt="" title="footer-logo">
+                        <p>Lorem ipsum dolor sit amet, consectetuer
+                           adipiscing elit. Aenean commodo ligula eget
+                           dolor. Aenean massa.
+                        </p>
+                        <div class="contact">
+                           <h4><i class="fa fa-phone"></i> 1(123) 456-7890</h4>
+                           <h4><i class="fa fa-map-marker"></i> San Diego City, US</h4>
+                           <h4> <i class="fa fa-clock-o"></i> Mon - Sat 9.00 - 17.00</h4>
+                        </div>
+                     </div>
+                     <!--t-footer-->
                   </div>
-                  <div class="news-content">
-                     <h3 class="new-title">
-                        Subscribe our newsletter                   
-                     </h3>
-                     <p>Register now! We will send you best offers for your trip. </p>
+                  <!--col-->
+                  <div class="col-sm-4 col-sm-4">
+                     <div class="t-footer">
+                        <h2>Useful Links</h2>
+                        <ul class="tt-footer-list">
+                           <li><a href="index.html">Home</a></li>
+                           <li><a href="about.html">About Us</a></li>
+                           <li><a href="faq.html">Faq</a></li>
+                           <li><a href="appointment.html">Appointment</a></li>
+                           <li><a href="contactus.html">Contact Us</a></li>
+                        </ul>
+                     </div>
+                     <!--t-footer-->
+                  </div>
+                  <!--col-->
+                  <div class="col-sm-4 col-sm-4">
+                     <div class="t-footer">
+                        <h2 class="last">Opening Hours</h2>
+                        <div class="Monday ">
+                           <h5>Monday <span>8:00 AM - 4:00 PM</span></h5>
+                           <h5>Wednesday<span>8:00 AM - 4:00 PM</span></h5>
+                           <h5>Friday <span>8:00 AM - 4:00 PM</span></h5>
+                           <h5>Saturday <span>9:00 AM - 3:00 PM</span></h5>
+                           <h5>Sunday <span>closed</span></h5>
+                        </div>
+                     </div>
+                     <!--t-footer-->
+                  </div>
+                  <!--col-->
+               </div>
+               <!--row-->
+            </div>
+            <!--t-footer-->
+         </div>
+         <!--container-->
+      </div>
+      <!--footer-->
+      <!--================ Our footer Section start=================-->
+      <!--================ Our bottom footer Section start=================-->
+      <div class="footer-bottom">
+         <div class="container">
+            <div class="row">
+               <div class="col-sm-6 col-sd-6 col-xs-12">
+                  <div class="tt-copy-left">
+                     Copyright © Fitaza 2019. All rights reserved.
                   </div>
                </div>
-               <div class="newsletter-right col-md-6">
-                  <form class="newsletter">
-                     <div class="tnp-field tnp-field-email"><label>email</label>
-                        <input class="tnp-email" type="email" name="ne" value="" placeholder="Enter Your Email" required>
-                        <button type="submit" class="btn btn-success sim-button button8 btn-effect "><span>Submit</span></button>
-                     </div>
-                     <div class="tnp-field tnp-field-button">
-                     </div>
-                  </form>
+               <div class="col-sm-6 col-xs-12">
+                  <div class="tt-copy-right">
+                     <p> Created by: &nbsp;<a href="http://www.bootstrapmb.com/">ThemeChampion</a></p>
+                  </div>
                </div>
             </div>
          </div>
       </div>
-      <!--================ Our footer Section start=================-->
-      <footer class="xyz">
-         <div class="footer cellpadding">
-            <div class="container">
-               <div class="row">
-                  <div class="t-footer">
-                     <div class="col-sm-4 col-sm-4">
-                        <div class="t-footer">
-                           <img src="images/footer-logo.png" class="img-responsive" alt="" title="footer-logo">
-                           <p>Lorem ipsum dolor sit amet, consectetuer 
-                              adipiscing elit. Aenean commodo ligula eget
-                              dolor. Aenean massa.
-                           </p>
-                           <div class="contact">
-                              <h4><i class="fa fa-phone"></i> 1(123) 456-7890</h4>
-                              <h4><i class="fa fa-map-marker"></i>     San Diego City, US</h4>
-                              <h4> <i class="fa fa-clock-o"></i> Mon - Sat 9.00 - 17.00</h4>
-                           </div>
-                        </div>
-                        <!--t-footer-->
-                     </div>
-                     <!--col-->
-                     <div class="col-sm-4 col-sm-4">
-                        <div class="t-footer">
-                           <h2>Useful Links</h2>
-                           <ul class="tt-footer-list">
-                              <li><a href="index.html">Home</a></li>
-                              <li><a href="about.html">About Us</a></li>
-                              <li><a href="faq.html">Faq</a></li>
-                              <li><a href="appointment.html">Appointment</a></li>
-                              <li><a href="contactus.html">Contact Us</a></li>
-                           </ul>
-                        </div>
-                        <!--t-footer-->
-                     </div>
-                     <!--col-->
-                     <div class="col-sm-4 col-sm-4">
-                        <div class="t-footer">
-                           <h2  class="last">Opening Hours</h2>
-                           <div class="Monday ">
-                              <h5>Monday <span>8:00 AM - 4:00 PM</span></h5>
-                              <h5>Wednesday<span>8:00 AM - 4:00 PM</span></h5>
-                              <h5>Friday <span>8:00 AM - 4:00 PM</span></h5>
-                              <h5>Saturday <span>9:00 AM - 3:00 PM</span></h5>
-                              <h5>Sunday <span>closed</span></h5>
-                           </div>
-                        </div>
-                        <!--t-footer-->
-                     </div>
-                     <!--col-->
-                  </div>
-                  <!--row-->
-               </div>
-               <!--t-footer-->
-            </div>
-            <!--container-->
-         </div>
-         <!--footer-->
-         <!--================ Our footer Section start=================-->
-         <!--================ Our bottom footer Section start=================-->
-         <div class="footer-bottom">
-            <div class="container">
-               <div class="row">
-                  <div class="col-sm-6 col-sd-6 col-xs-12">
-                     <div class="tt-copy-left">
-                        Copyright © Fitaza 2019. All rights reserved.
-                     </div>
-                  </div>
-                  <div class="col-sm-6 col-xs-12">
-                     <div class="tt-copy-right">
-                        <p> Created by: &nbsp;<a href="http://www.bootstrapmb.com/">ThemeChampion</a></p>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </footer>
+   </footer>
 
-      <!-- Back To Top Start -->
-      <a id="mkdf-back-to-top" href="#" class="off"><i class="fa fa-chevron-up"></i></a>
-      <!-- Back To Top End -->
+   <!-- Back To Top Start -->
+   <a id="mkdf-back-to-top" href="#" class="off"><i class="fa fa-chevron-up"></i></a>
+   <!-- Back To Top End -->
 
-      <!--================ Our bottom footer Section end=================-->
-      <script src="js/jquery.min.js"></script>
-      <script src="js/custom.js"></script>
-      <script src="js/global.js"></script>
-      <script src="js/jquery.shuffle.min.js"></script>
-      <script src="js/swiper.jquery.min.js"></script>
-      <script src="js/owl.carousel.min.js"></script>
-      <script src="js/jquery.magnific-popup.min.js"></script>
-      <script src="js/jquery.barfiller.js"></script>
-      <script src="js/imagelightbox.min.js"></script>
-      <script src="js/record.js"></script>
-      <script id="-mob-share" src="http://f1.webshare.mob.com/code/mob-share.js?appkey=2d4941ecfe0f2"></script>
-      <script src="js/soa.js"></script>
-   </body>
+   <!--================ Our bottom footer Section end=================-->
+   <script src="js/jquery.min.js"></script>
+   <script src="js/custom.js"></script>
+   <script src="js/global.js"></script>
+   <script src="js/jquery.shuffle.min.js"></script>
+   <script src="js/swiper.jquery.min.js"></script>
+   <script src="js/owl.carousel.min.js"></script>
+   <script src="js/jquery.magnific-popup.min.js"></script>
+   <script src="js/jquery.barfiller.js"></script>
+   <script src="js/imagelightbox.min.js"></script>
+   <script src="js/record.js"></script>
+   <script id="-mob-share" src="http://f1.webshare.mob.com/code/mob-share.js?appkey=2d4941ecfe0f2"></script>
+   <script src="js/soa.js"></script>
+   <script src="js/bootstrap.min.js"></script>
+</body>
+
 </html>
