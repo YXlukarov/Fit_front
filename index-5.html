@@ -10,12 +10,15 @@
       <link href="css/animate.css" rel="stylesheet">
       <link href="css/swiper.css" rel="stylesheet" type="text/css">
       <link href="css/owl.carousel.min.css" rel="stylesheet">
+      <link href="css/dropzonestyle.css" rel="stylesheet">
       <link href="css/style.css" rel="stylesheet" type="text/css">
       <link href="css/responsive.css" rel="stylesheet" type="text/css">
       <link href="css/magnific-popup.css" rel="stylesheet">
       <link href="css/light_box.css" rel="stylesheet" type="text/css">
       <link href="css/icofont.css" rel="stylesheet" type="text/css">
       <link href="icofont.min.css" rel="stylesheet" type="text/css">
+      <link href="css/dropzone.css" rel="stylesheet" type="text/css">
+      <link href="css/number.css" rel="stylesheet" type="text/css">
       <title>Fitaza</title>
       <!--================ Our header Section =================-->
    </head>
@@ -454,97 +457,30 @@
       <div class="trainers cellpadding trainers-2">
          <div class="container">
             <div class="row">
-               <div class="col-sm-12 col-md-12">
-                  <div class="main-headings">
+               <div class="col-sm-6 col-md-6">
+                  <!-- <div class="main-headings">
                      <h2>Our <span>Trainers</span></h2>
                      <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis<br>
                         praesentium voluptatum deleniti atque 
                      </p>
-                  </div>
+                  </div> -->
+                  <!-- <form action="http://127.0.0.1:8080/decorate/pictures" class="dropzone dropzone-design" id="dpz-multiple-files"
+        enctype="multipart/form-data">
+    </form> -->
+                  <div id="myDropZone" class="dropzone dropzone-design">
+                     <div class="dz-default dz-message"><span>Drop files here to upload</span></div>
+                 </div>
                </div>
-            </div>
-         </div>
-         <div class="container">
-            <div class="row">
-               <div class="owl-carousel owl-carousel17 owl-theme">
-                  <div class="item">
-                     <div class="champian">
-                        <div class="champian1">
-                           <img src="images/about-images/Frank-Chapman.jpg" alt="Frank Chapman" class="img-responsive">
-                           <div class="overlay">
-                              <div class="text">
-                                 <a href="#"><i class="fa fa-facebook-f"></i></a>
-                                 <a href="#"><i class="fa fa-twitter"></i></a>
-                                 <a href="#"><i class="fa fa-linkedin"></i></a>
-                                 <a href="#"><i class="fa fa-instagram"></i></a>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="box-shadows">
-                           <h4>Frank Chapman</h4>
-                           <h5>Male Fitness Coach</h5>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="item">
-                     <div class="champian">
-                        <div class="champian1">
-                           <img src="images/about-images/Frank-Chapman-2.jpg" alt="Frank Chapman" class="img-responsive">
-                           <div class="overlay">
-                              <div class="text">
-                                 <a href="#"><i class="fa fa-facebook-f"></i></a>
-                                 <a href="#"><i class="fa fa-twitter"></i></a>
-                                 <a href="#"><i class="fa fa-linkedin"></i></a>
-                                 <a href="#"><i class="fa fa-instagram"></i></a>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="box-shadows">
-                           <h4>Thomas Clark</h4>
-                           <h5>Male Fitness Coach</h5>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="item">
-                     <div class="champian">
-                        <div class="champian1">
-                           <img src="images/about-images/Frank-Chapman-3.jpg" alt="Frank Chapman" class="img-responsive">
-                           <div class="overlay">
-                              <div class="text">
-                                 <a href="#"><i class="fa fa-facebook-f"></i></a>
-                                 <a href="#"><i class="fa fa-twitter"></i></a>
-                                 <a href="#"><i class="fa fa-linkedin"></i></a>
-                                 <a href="#"><i class="fa fa-instagram"></i></a>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="box-shadows">
-                           <h4>Warren Harris</h4>
-                           <h5>Male Fitness Coach</h5>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="item">
-                     <div class="champian">
-                        <div class="champian1">
-                           <figure>
-                              <img src="images/about-images/Frank-Chapman2.jpg" alt="Frank Chapman" class="img-responsive">
-                              <div class="overlay">
-                                 <div class="text">
-                                    <a href="#"><i class="fa fa-facebook-f"></i></a>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-linkedin"></i></a>
-                                    <a href="#"><i class="fa fa-instagram"></i></a>
-                                 </div>
-                              </div>
-                           </figure>
-                        </div>
-                        <div class="box-shadows">
-                           <h4>William Hill</h4>
-                           <h5>Male Fitness Coach</h5>
-                        </div>
-                     </div>
-                  </div>
+
+               <div class="col-sm-6 col-md-6">
+                  <!-- <div class="main-headings">
+                     <h2>Our <span>Trainers</span></h2>
+                     <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis<br>
+                        praesentium voluptatum deleniti atque 
+                     </p>
+                  </div> -->
+                  <h1>打分</h1>
+                  <div class="number"></div>
                </div>
             </div>
          </div>
@@ -956,8 +892,8 @@
                         <div class="t-footer">
                            <h2>Useful Links</h2>
                            <ul class="tt-footer-list">
-                              <li><a href="index.html">Home</a></li>
-                              <li><a href="about.html">About Us</a></li>
+                              <li><a href="index.html">首页</a></li>
+                              <li><a href="about.html">关于</a></li>
                               <li><a href="faq.html">Faq</a></li>
                               <li><a href="appointment.html">Appointment</a></li>
                               <li><a href="contactus.html">Contact Us</a></li>
@@ -1022,7 +958,9 @@
       <script src="js/jquery.magnific-popup.min.js"></script>
       <script src="js/jquery.barfiller.js"></script>
       <script src="js/imagelightbox.min.js"></script>
+      <script src="js/dropzone.js"></script>
       <script src="js/record.js"></script>
       <script src="js/soa.js"></script>
+      <script src="js/number.js"></script>
    </body>
 </html>
