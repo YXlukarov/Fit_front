@@ -66,6 +66,7 @@
 
 .dropzone-design .dz-preview.dz-image-preview {
     background: white;
+    height: 150px;
 }
 
 .dropzone-design .dz-preview.dz-image-preview .dz-details {
