@@ -10734,3 +10734,11 @@ h3.tt-title{
 	width: 100%;
 	height: 800px;
 }
+
+/* 
+	Video in workout page
+*/
+.workout-desc-video{
+	height: 300px;
+	width: 100%;
+}
