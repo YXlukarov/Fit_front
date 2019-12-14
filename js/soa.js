@@ -41,7 +41,7 @@ $("#searchPic").on('change',function(){
     var file_data = $("#searchPic")[0].files[0];
     form_data.append("picture", file_data);
     $.ajax({
-        async: false,
+        async: false,                                                                                                               
         type: "POST",
         url: url,
         contentType: false,
