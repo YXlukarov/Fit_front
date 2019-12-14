@@ -257,6 +257,33 @@
       <script src="js/jquery.magnific-popup.min.js"></script>
       <script src="js/jquery.barfiller.js"></script>
       <script type="text/javascript">
+      //获取url中的参数
+      function getUrlParam(name) {
+         //构造一个含有目标参数的正则表达式对象 &name=参数&
+         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+         var r = window.location.search.substr(1).match(reg);//匹配目标参数
+         if (r != null) return unescape(r[2]); return null;//返回参数值
+      }
+
+      var keyList = ["餐饮"];
+      var str=decodeURI(location.href);
+      var num=str.indexOf("?") 
+          str=str.substr(num+1); 
+      var value;
+      var arr=str.split("&"); //各个参数放到数组里
+      for(var i=0;i < arr.length;i++){ 
+         num=arr[i].indexOf("="); 
+         if(num>0){ 
+            value=arr[i].substr(num+1);
+            keyList.push(value);
+         }
+      } 
+
+      keyList.push(getUrlParam("target1"));
+      keyList.push(getUrlParam("target2"));
+      keyList.push(getUrlParam("target3"));
+      console.log(keyList);
+
 		// 百度地图API功能
 		var map = new BMap.Map("l-map");
 		//var point = new BMap.Point(116.331398,39.897445);
@@ -270,7 +297,7 @@
 				map.centerAndZoom(cityPoint,18);
             var local = new BMap.LocalSearch(map, {renderOptions: {map: map,panel: "r-result",autoViewport: true}});
             // ["餐饮", "烤鸭"] 
-				local.searchNearby(["烤鸭", "盖码饭"],cityPoint,1000);
+				local.searchNearby(keyList,cityPoint,1000);
 			}
 			else {
 				console.error('failed'+this.getStatus());

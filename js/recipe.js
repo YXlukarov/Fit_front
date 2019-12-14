@@ -1,3 +1,9 @@
+var dishList;
+$('#dishMap').on('click', function(e){
+    e.preventDefault();
+    window.location.replace("contactus.html?target1=" + dishList[0].name + '&' + 'target2=' + dishList[1].name + '&' + 'target3=' + dishList[2].name);
+});
+
 var url = "http://localhost:8011/recipe/";
 $(".blog_left_sidebar_sign").ready(function(){
     url = url + "2";
@@ -5,7 +11,7 @@ $(".blog_left_sidebar_sign").ready(function(){
         type: "GET",
         url: url
     }).success(function(msg){
-        var dishList = msg.result.list;
+        dishList = msg.result.list;
         //dish1
         $("#d1image").attr("src",dishList[0].pic);
         $("#d1name").text(dishList[0].name);
