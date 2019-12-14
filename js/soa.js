@@ -119,21 +119,7 @@ $(function () {
     $("#loginBtn").on("click", btn);
 
     function btn() {
-        var username = $("input[name=username]").val();
-        var password = $("input[name=password]").val(); 
-        $.ajax({
-            url: hostURL+"/login",
-            async: true,
-            type: "post",
-            dataType: "String",
-            data: { "username": username ,"password":password},
-            success: function (data) {
-                alert("登录发送成功");
-            },
-            error: function () {
-                console.log("登录不成功")
-            }
-        });
+        window.location.replace("personal-center.html");
     }
 });
 
@@ -145,3 +131,34 @@ $('#login').on('hidden.bs.modal', function () {
       show:true
     });
   });
+
+  $(function () {
+    //存储全局url
+    var hostURL = ""
+
+    //从当前目录下的url.json文件里，获取全局的url配置
+    $.getJSON("./url.json", function (data) {
+        hostURL = data.url
+    });
+
+    //为获取验证码绑定事件
+    $("#vcBtn").on("click", btn);
+    function btn() {
+        alert("验证码已发送");
+        var phone = $("input[name=phone]").val();
+        alert(phone)
+        $.ajax({
+            url: hostURL+"/sendValidation",
+            async: false,
+            type: "post",
+            dataType: "String",
+            data: { "phone": phone },
+            success: function (data) {
+                alert(data);
+            },
+            error: function () {
+                console.log("发送不成功")
+       }
+        });
+    }
+});

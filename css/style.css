@@ -10775,3 +10775,17 @@ img.recipe-detail-pro{
 	width: 300px;
 	height: 90%;
 }
+
+.loginBtn{
+	display: inline-block;
+    padding: .3em .5em;
+	/* background-image: linear-gradient(#ddd, #bbb); */
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: .3em;
+    box-shadow: 0 1px white inset;
+    text-align: center;
+    /* text-shadow: 0 1px 1px black; */
+	color:white;
+	background:#FF9900;
+    font-weight: bold;
+}
