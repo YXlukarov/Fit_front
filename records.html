@@ -198,7 +198,7 @@
                                                 <div class="input-group">
                                                     <span class="input-group-addon" id="basic-addon1"><i
                                                             class="fa fa-calendar"></i></span>
-                                                    <input type="text" id="calendar" placeholder="12/12/2019"
+                                                    <input type="text" id="calendar" placeholder="2019 12 14"
                                                         class="form-control">
                                                 </div>
                                             </div>
@@ -207,7 +207,7 @@
                                         <div class="empty-space lg-15 sm-15 xs-15"></div>
                                         <h4 class="tt-title h4 yellow text-center ">今日记录</h4>
                                         <div class="empty-space lg-15 sm-15 xs-15"></div>
-                                        <form action="contact_process.php" method="post" id="leaveComment">
+                                        <form id="leaveComment">
                                             <div>
                                                 <div class="row">
                                                     <div class="col-md-6 col-sm-6 col-xs-6">
@@ -294,15 +294,11 @@
                                                 <div class="breadcrumb pull-right">
                                                     <ul>
                                                         <li><a href="index.html">获取21天减肥食谱>></a></li>
-                                                        <!-- <li><i class="fa fa-angle-right" aria-hidden="true"></i></li> -->
-                                                        <!-- <li><a href="classes.html">Classes</a></li>
-                                                                <li><i class="fa fa-angle-right" aria-hidden="true"></i></li>
-                                                                <li class="active"><a href="runing-fitness.html">个人中心</a></li> -->
                                                     </ul>
                                                 </div>
                                             </div>
 
-                                            <button type="submit" name="leaveComment" id="edit"
+                                            <button type="button" name="leaveComment" id="edit"
                                                 class="btn sim-button button8 pull-right">
                                                 <span>上传修改</span>
                                             </button>
@@ -444,7 +440,13 @@
     <script src="js/select.js"></script>
     <script>
         //用于保存选择的日期
-        var selectedDate;
+        var selectedDate = "20191214";
+
+        //存储全局url
+        var hostURL = ""
+        $.getJSON("./url.json", function (data) {
+            hostURL = data.url
+        });
 
         //四个数组用于保存每餐吃的是什么
         var breakfastArr = new Array()
@@ -457,8 +459,36 @@
             $("#calendar1").bootstrapDatepickr({ date_format: "d-m-Y" });
             $("#calendar2").bootstrapDatepickr({ date_format: "l, do F Y" });
         });
-
-
     </script>
+    <script>
+        $('#edit').click(function () {
+            console.log("点击成功");
+            var data = {};
+            data['date'] = selectedDate;
+            data['breakfast'] = breakfastArr;
+            data['lunch'] = lunchArr;
+            data['dinner'] = dinnerArr;
+            data['others'] = extraFoodArr;
+            console.log(data)
+            var jsonData = JSON.stringify(data);
+            console.log(jsonData)
+            $.ajax({
+                type: "post",
+                url: hostURL + "/adddailyfood",
+                async: false,
+                dataType: 'json',
+                contentType : "application/json",
+                data: jsonData,
+                success: function (data) {
+                    alert("数据发送成功");
+                },
+                error: function () {
+                    console.log("数据发送不成功")
+                }
+            });
+        }); 
+    </script>
+
 </body>
+
 </html>
