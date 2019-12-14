@@ -64,7 +64,6 @@ $(function() {
 
     //弹框
     $("#replaceImg").on("click",function (e) {
-        console.log("sdasd");
         e.preventDefault();
         takeImg();
     });
