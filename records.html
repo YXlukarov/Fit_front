@@ -199,7 +199,7 @@
                                                 <div class="input-group">
                                                     <span class="input-group-addon" id="basic-addon1"><i
                                                             class="fa fa-calendar"></i></span>
-                                                    <input type="text" id="calendar" placeholder="12/12/2019"
+                                                    <input type="text" id="calendar" placeholder="2019 12 14"
                                                         class="form-control">
                                                 </div>
                                             </div>
@@ -208,7 +208,7 @@
                                         <div class="empty-space lg-15 sm-15 xs-15"></div>
                                         <h4 class="tt-title h4 yellow text-center ">今日记录</h4>
                                         <div class="empty-space lg-15 sm-15 xs-15"></div>
-                                        <form action="contact_process.php" method="post" id="leaveComment">
+                                        <form id="leaveComment">
                                             <div>
                                                 <div class="row">
                                                     <div class="col-md-6 col-sm-6 col-xs-6">
@@ -295,15 +295,11 @@
                                                 <div class="breadcrumb pull-right">
                                                     <ul>
                                                         <li><a href="index.html">获取21天减肥食谱>></a></li>
-                                                        <!-- <li><i class="fa fa-angle-right" aria-hidden="true"></i></li> -->
-                                                        <!-- <li><a href="classes.html">Classes</a></li>
-                                                                <li><i class="fa fa-angle-right" aria-hidden="true"></i></li>
-                                                                <li class="active"><a href="runing-fitness.html">个人中心</a></li> -->
                                                     </ul>
                                                 </div>
                                             </div>
 
-                                            <button type="submit" name="leaveComment" id="edit"
+                                            <button type="button" name="leaveComment" id="edit"
                                                 class="btn sim-button button8 pull-right">
                                                 <span>上传修改</span>
                                             </button>
@@ -463,9 +459,9 @@
         $.ajax({
             type: "get",
             url: url1,
-            success: function(data) {
+            success: function (data) {
                 console.log(data);
-                for(var i = 0; i < data.length; i ++){
+                for (var i = 0; i < data.length; i++) {
                     dateDataList.push(data[i].year + "-" + data[i].month + "-" + data[i].day);
                     breakfastDataList.push(data[i].breakfastCa);
                     lunchDataList.push(data[i].lunchCa);
@@ -492,7 +488,7 @@
                         line: {
                             dataLabels: {
                                 // 开启数据标签
-                                enabled: true          
+                                enabled: true
                             },
                             // 关闭鼠标跟踪，对应的提示框、点击事件会失效
                             enableMouseTracking: false
@@ -512,7 +508,7 @@
                         data: otherDataList
                     }]
                 });
-                chart1.xAxis.setData(JSON.parse('{"categories:"' + '"[12,15]"'  + '},'));
+                chart1.xAxis.setData(JSON.parse('{"categories:"' + '"[12,15]"' + '},'));
 
                 // breakfastData += '{"name":' + '"早餐"' + ',"data"":' + browsingBuildingNameMap.get(data[key].name) + "},";
                 // lunchData += '{"name":' + '"中餐"' + ',"data":' + browsingBuildingAddressMap.get(address) + "},";
@@ -528,7 +524,7 @@
                 // chart1.series[2].setData(JSON.parse(dinnerData));
                 // chart1.series[3].setData(JSON.parse(otherData));
             },
-            error: function() {
+            error: function () {
                 console.log("error");
             }
         });
@@ -570,8 +566,23 @@
 
     </script>
     <script>
+        //获取全局的数据
+        var dish = window.sessionStorage.getItem('newDish');
+
         //用于保存选择的日期
-        var selectedDate;
+        var selectedDate = "20191214";
+
+        //用于存储具体的小时
+        var hour;
+
+        //用于存储是哪一餐
+        var dishTime;
+
+        //存储全局url
+        var hostURL = ""
+        $.getJSON("./url.json", function (data) {
+            hostURL = data.url
+        });
 
         //四个数组用于保存每餐吃的是什么
         var breakfastArr = new Array()
@@ -579,13 +590,69 @@
         var dinnerArr = new Array()
         var extraFoodArr = new Array()
 
+        //要等页面渲染完之后才能进行的操作
         $(document).ready(function () {
             $("#calendar").bootstrapDatepickr();
             $("#calendar1").bootstrapDatepickr({ date_format: "d-m-Y" });
             $("#calendar2").bootstrapDatepickr({ date_format: "l, do F Y" });
+
+
+            hour = new Date().getHours()
+            
+            if(hour >=5 && hour <= 12){
+                dishTime = "breakfast";
+                breakfastArr.push(dish);
+            }else if(hour >= 12 && hour <= 14){
+                dishTime = "lunch";
+                lunchArr.push(dish)
+            }else if(hour >= 17 && hour <= 20){
+                dishTime = "dinner";
+                dinnerArr.push(dish)
+            }else{
+                dishTime = "extraFood"
+                extraFoodArr.push(dish)
+            }
+
+            //页面跳转时加入新的饮食
+            var selectElement = $("#"+dishTime).parent().parent().parent()
+            var a = $('<a />').addClass('notShown').html('<em>' + dish + '</em><i></i>').addClass("shown").appendTo(selectElement.children('div'))
+            selectElement.children('div').children('span').addClass('hide');
+            selectElement.find('option:contains(' + dish + ')').prop('selected', true);
         });
 
 
+
     </script>
+    <script>
+        //上传新的修改
+        $('#edit').click(function () {
+            console.log("点击成功");
+            var data = {};
+            data['date'] = selectedDate;
+            data['breakfast'] = breakfastArr;
+            data['lunch'] = lunchArr;
+            data['dinner'] = dinnerArr;
+            data['others'] = extraFoodArr;
+            console.log(data)
+            var jsonData = JSON.stringify(data);
+            console.log(jsonData)
+            $.ajax({
+                type: "post",
+                url: hostURL + "/adddailyfood",
+                async: false,
+                dataType: 'json',
+                contentType: "application/json",
+                data: jsonData,
+                success: function (data) {
+                    alert("数据发送成功");
+                },
+                error: function () {
+                    console.log("数据发送不成功")
+                }
+            });
+        }); 
+    </script>
+
 </body>
+
 </html>

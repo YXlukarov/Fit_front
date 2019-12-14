@@ -10748,6 +10748,12 @@ h3.tt-title{
 }
 
 /* 
+	Dish detail image resize
+*/
+img.dish-image{
+	width: 100%;
+	height: 400px;
+}
 	Recommend recipe image repeat
 */
 .recipe-image-div{
