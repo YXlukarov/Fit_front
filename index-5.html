@@ -18,7 +18,9 @@
       <link href="css/icofont.css" rel="stylesheet" type="text/css">
       <link href="icofont.min.css" rel="stylesheet" type="text/css">
       <link href="css/dropzone.css" rel="stylesheet" type="text/css">
+      <link href="css/cropper.min.css" rel="stylesheet" type="text/css">
       <link href="css/number.css" rel="stylesheet" type="text/css">
+      <link href="css/ImgCropping.css" rel="stylesheet" type="text/css">
       <title>Fitaza</title>
       <!--================ Our header Section =================-->
    </head>
@@ -229,7 +231,7 @@
                         <label for="searchPic" class="searchPic"><a class="icofont-upload-alt"></a></label>
                      </form>
                   </li>
-                  <li><a href="#" target="_blank"><i class="icofont-camera-alt"></i></a></li>
+                  <li><a href="#" target="_blank" id="replaceImg"><i class="icofont-camera-alt"></i></a></li>
                </ol>
             </div>
          </div>
@@ -1017,6 +1019,38 @@
       </div>
    </footer>
 
+<!--图片裁剪框 start-->
+<div style="display: none" class="tailoring-container">
+   <div class="black-cloth" onclick="closeTailor(this)"></div>
+   <div class="tailoring-content">
+       <div class="tailoring-content-one">
+           <label title="拍照" class="l2-btn choose-btn" id='capture' style="margin-left: 2%;">拍照</label>
+           <label title="重拍" class="l2-btn choose-btn" id='takeAgain' style="margin-left: 2%;">重拍</label>
+           <div class="close-tailoring" id="closed">×</div>
+       </div>
+       <div class="tailoring-content-two">
+           <div class="tailoring-box-parcel">
+               <video id="video" width="100%" height="100%" controls  style="float: left;" ></video>
+               <canvas id="canvas" width="482px" height="448px" style="float: left;" hidden="hidden"></canvas>
+               <div id="showImg" hidden="hidden" style="width: 100%;height:100%;">
+                   <img id="tailoringImg">
+               </div>
+           </div>
+           <div class="preview-box-parcel">
+               <p>图片预览：</p>
+               <div class="square previewImg"></div>
+               <div class="circular previewImg"></div>
+           </div>
+       </div>
+       <div class="tailoring-content-three">
+           <button class="l2-btn cropper-reset-btn">复位</button>
+           <button class="l2-btn cropper-rotate-btn">旋转</button>
+           <button class="l2-btn cropper-scaleX-btn">换向</button>
+           <button class="l2-btn sureCut" id="sureCut">上传</button>
+       </div>
+   </div>
+</div>
+<!--图片裁剪框 end-->
 
    <!-- Back To Top Start -->
    <a id="mkdf-back-to-top" href="#" class="off"><i class="fa fa-chevron-up"></i></a>
@@ -1032,10 +1066,13 @@
    <script src="js/jquery.magnific-popup.min.js"></script>
    <script src="js/jquery.barfiller.js"></script>
    <script src="js/imagelightbox.min.js"></script>
+   <script src="js/cropper.min.js"></script>
+   <script src="js/dropzone.js"></script>
    <script src="js/record.js"></script>
    <script id="-mob-share" src="http://f1.webshare.mob.com/code/mob-share.js?appkey=2d4941ecfe0f2"></script>
    <script src="js/soa.js"></script>
    <script src="js/bootstrap.min.js"></script>
    <script src="js/number.js"></script>
+   <script src="js/image.js"></script>
 </body>
 </html>
