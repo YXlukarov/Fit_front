@@ -184,12 +184,11 @@
                         </aside>
                     </div>
                     <div class="col-sm-12 col-md-9 main-sarvices">
-                        <!-- <h4 class="tt-title h4 yellow text-center ">卡路里摄入曲线</h4> -->
-                        <div id="container" style="min-width:400px;height:400px"></div>
-                        <!-- <div class="form-group Message top_bottom">
+                        <h4 class="tt-title h4 yellow text-center ">卡路里摄入曲线</h4>
+                        <div class="form-group Message top_bottom">
                             <textarea class="form-control" id="comment" name="comment"
                                 placeholder="Write Comment"></textarea>
-                        </div> -->
+                        </div>
                         <div class="f-buton">
                             <div class="row">
                                 <div class="col-md-12 col-sm-12 five-haadings">
@@ -439,132 +438,6 @@
     <script src="js/jquery.barfiller.js"></script>
     <script src="js/bootstrapDatepickr-1.0.0.min.js"></script>
     <script src="js/select.js"></script>
-    <script src="https://code.highcharts.com.cn/highcharts/highcharts.js"></script>
-    <script src="https://code.highcharts.com.cn/highcharts/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com.cn/highcharts/modules/oldie.js"></script>
-    <script src="https://code.highcharts.com.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
-
-    <script>
-        var url1 = "http://localhost:8011/alldailyfood";
-
-        var breakfastData = "[";
-        var lunchData = "[";
-        var dinnerData = "[";
-        var otherData = "[";
-        var dateDataList = [];
-        var breakfastDataList = [];
-        var lunchDataList = [];
-        var dinnerDataList = [];
-        var otherDataList = [];
-        $.ajax({
-            type: "get",
-            url: url1,
-            success: function(data) {
-                console.log(data);
-                for(var i = 0; i < data.length; i ++){
-                    dateDataList.push(data[i].year + "-" + data[i].month + "-" + data[i].day);
-                    breakfastDataList.push(data[i].breakfastCa);
-                    lunchDataList.push(data[i].lunchCa);
-                    dinnerDataList.push(data[i].dinnerCa);
-                    otherDataList.push(data[i].othersCa);
-                }
-
-                Highcharts.chart('container', {
-                    chart: {
-                        type: 'line'
-                    },
-                    title: {
-                        text: '卡路里摄入曲线'
-                    },
-                    xAxis: {
-                        categories: dateDataList
-                    },
-                    yAxis: {
-                        title: {
-                            text: '卡路里 (Kcal)'
-                        }
-                    },
-                    plotOptions: {
-                        line: {
-                            dataLabels: {
-                                // 开启数据标签
-                                enabled: true          
-                            },
-                            // 关闭鼠标跟踪，对应的提示框、点击事件会失效
-                            enableMouseTracking: false
-                        }
-                    },
-                    series: [{
-                        name: '早餐',
-                        data: breakfastDataList
-                    }, {
-                        name: '中餐',
-                        data: lunchDataList
-                    }, {
-                        name: '晚餐',
-                        data: dinnerDataList
-                    }, {
-                        name: '加餐',
-                        data: otherDataList
-                    }]
-                });
-                chart1.xAxis.setData(JSON.parse('{"categories:"' + '"[12,15]"'  + '},'));
-
-                // breakfastData += '{"name":' + '"早餐"' + ',"data"":' + browsingBuildingNameMap.get(data[key].name) + "},";
-                // lunchData += '{"name":' + '"中餐"' + ',"data":' + browsingBuildingAddressMap.get(address) + "},";
-                // dinnerData += '{"name":' + '"晚餐"' + ',"data":' + browsingBuildingAreaMap.get(data[key].floorsSpace) + "},";
-                // otherData += '{"name":' + '"加餐"' + ',"data":' + browsingBuildingTotalPriceMap.get(data[key].price) + "},";
-
-                // browsingBuildingNameData = browsingBuildingNameData.substring(0, browsingBuildingNameData.length - 1) + "]";
-                // browsingBuildingAddressData = browsingBuildingAddressData.substring(0, browsingBuildingAddressData.length - 1) + "]";
-                // browsingBuildingAreaData = browsingBuildingAreaData.substring(0, browsingBuildingAreaData.length - 1) + "]";
-                // browsingBuildingTotalPriceData = browsingBuildingTotalPriceData.substring(0, browsingBuildingTotalPriceData.length - 1) + "]";
-                // chart1.series[0].setData(JSON.parse(breakfastData));
-                // chart1.series[1].setData(JSON.parse(lunchData));
-                // chart1.series[2].setData(JSON.parse(dinnerData));
-                // chart1.series[3].setData(JSON.parse(otherData));
-            },
-            error: function() {
-                console.log("error");
-            }
-        });
-
-    //     var chart1 = Highcharts.chart('container', {
-    //     chart: {
-    //         type: 'line'
-    //     },
-    //     title: {
-    //         text: '卡路里摄入曲线'
-    //     },
-    //     xAxis: {
-    //         categories: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']
-    //     },
-    //     yAxis: {
-    //         title: {
-    //             text: '卡路里 (Kcal)'
-    //         }
-    //     },
-    //     plotOptions: {
-    //         line: {
-    //             dataLabels: {
-    //                 // 开启数据标签
-    //                 enabled: true          
-    //             },
-    //             // 关闭鼠标跟踪，对应的提示框、点击事件会失效
-    //             enableMouseTracking: false
-    //         }
-    //     },
-    //     series: [{
-    //         name: '东京',
-    //         data: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 50, 23.3, 18.3, 13.9, 9.6]
-    //     }, {
-    //         name: '伦敦',
-    //         data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-    //     }]
-    // });
-
-
-    </script>
     <script>
         //用于保存选择的日期
         var selectedDate = "20191214";

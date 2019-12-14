@@ -268,9 +268,8 @@
 				cityPoint = r.point;
             console.log(cityPoint);
 				map.centerAndZoom(cityPoint,18);
-            var local = new BMap.LocalSearch(map, {renderOptions: {map: map,panel: "r-result",autoViewport: true}});
-            // ["餐饮", "烤鸭"] 
-				local.searchNearby(["烤鸭", "盖码饭"],cityPoint,1000);
+				var local = new BMap.LocalSearch(map, {renderOptions: {map: map,panel: "r-result",autoViewport: true}}); 
+				local.searchNearby("餐饮",cityPoint,500);
 			}
 			else {
 				console.error('failed'+this.getStatus());
