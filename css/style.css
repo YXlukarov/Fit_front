@@ -26,6 +26,9 @@ p {
 	padding: 0;
 	margin: 0;
 }
+/* 
+	首页顶端搜索样式
+ */
 .search input{
 	width: 650px;
 	height: 40px;
@@ -69,6 +72,20 @@ p {
 .searchChange {
 	color: red;
 }
+
+/*
+	导航栏右边的菜品识别的样式
+ */
+.camfunc #searchPic{
+	display: none;
+}
+.header-dish p{
+	font-family: 'Work Sans', sans-serif;
+	font-size: 16px;
+}
+
+
+
 .tt-header {
 	position: absolute;
 	top: 0;
@@ -10708,4 +10725,12 @@ h3.tt-title{
 }
 .scrollup.open{
   display: block;
+}
+
+/* 
+	Video in page index-5
+ */
+.index-video{
+	width: 100%;
+	height: 800px;
 }

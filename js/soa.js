@@ -88,3 +88,60 @@ $(".latest_news").ready(function(){
         })
     
 })
+
+//分享API
+mobShare.config( {
+  
+    debug: true, // 开启调试，将在浏览器的控制台输出调试信息
+
+    appkey: '2d4941ecfe0f2', // appkey
+
+    params: {
+        url: 'http://127.0.0.1:5500/Fit_front/index-5.html', // 分享链接
+        title: "我在Fit上管理健康，大家快来啊，一起", // 分享标题
+        description: "这是一个很好的健康管理网站", // 分享内容
+        pic: '', // 分享图片，使用逗号,隔开
+        reason:'',//自定义评论内容，只应用与QQ,QZone与朋友网
+    },
+} );
+
+
+//登录
+$(function () {
+    //存储全局url
+    var hostURL = ""
+
+    //从当前目录下的url.json文件里，获取全局的url配置
+    $.getJSON("./url.json", function (data) {
+        hostURL = data.url
+    });
+    //为获取验证码绑定事件
+    $("#loginBtn").on("click", btn);
+
+    function btn() {
+        var username = $("input[name=username]").val();
+        var password = $("input[name=password]").val(); 
+        $.ajax({
+            url: hostURL+"/login",
+            async: true,
+            type: "post",
+            dataType: "String",
+            data: { "username": username ,"password":password},
+            success: function (data) {
+                alert("登录发送成功");
+            },
+            error: function () {
+                console.log("登录不成功")
+            }
+        });
+    }
+});
+
+
+$('#login').on('hidden.bs.modal', function () {
+    //点击登录之后进行填写身份信息
+    $("#register").modal({
+      keyboard: false,
+      show:true
+    });
+  });
