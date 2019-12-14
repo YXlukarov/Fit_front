@@ -50,7 +50,7 @@ $("#searchPic").on('change',function(){
     }).success(function(msg){
         console.log(msg[0].targetImage_url);
         window.sessionStorage.setItem('dish',JSON.stringify(msg));
-        window.location.replace("http://127.0.0.1:5500/dish-details.html?targetImage_url=" + msg[0].targetImage_url);
+        window.location.replace("http://127.0.0.1:5500/Fit_front/dish-details.html?targetImage_url=" + msg[0].targetImage_url);
     }).fail(function(msg){
         alert("上传失败!")
     })

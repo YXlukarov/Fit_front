@@ -459,9 +459,9 @@
         $.ajax({
             type: "get",
             url: url1,
-            success: function(data) {
+            success: function (data) {
                 console.log(data);
-                for(var i = 0; i < data.length; i ++){
+                for (var i = 0; i < data.length; i++) {
                     dateDataList.push(data[i].year + "-" + data[i].month + "-" + data[i].day);
                     breakfastDataList.push(data[i].breakfastCa);
                     lunchDataList.push(data[i].lunchCa);
@@ -488,7 +488,7 @@
                         line: {
                             dataLabels: {
                                 // 开启数据标签
-                                enabled: true          
+                                enabled: true
                             },
                             // 关闭鼠标跟踪，对应的提示框、点击事件会失效
                             enableMouseTracking: false
@@ -508,7 +508,7 @@
                         data: otherDataList
                     }]
                 });
-                chart1.xAxis.setData(JSON.parse('{"categories:"' + '"[12,15]"'  + '},'));
+                chart1.xAxis.setData(JSON.parse('{"categories:"' + '"[12,15]"' + '},'));
 
                 // breakfastData += '{"name":' + '"早餐"' + ',"data"":' + browsingBuildingNameMap.get(data[key].name) + "},";
                 // lunchData += '{"name":' + '"中餐"' + ',"data":' + browsingBuildingAddressMap.get(address) + "},";
@@ -524,7 +524,7 @@
                 // chart1.series[2].setData(JSON.parse(dinnerData));
                 // chart1.series[3].setData(JSON.parse(otherData));
             },
-            error: function() {
+            error: function () {
                 console.log("error");
             }
         });
@@ -566,8 +566,17 @@
 
     </script>
     <script>
+        //获取全局的数据
+        var dish = window.sessionStorage.getItem('newDish');
+
         //用于保存选择的日期
         var selectedDate = "20191214";
+
+        //用于存储具体的小时
+        var hour;
+
+        //用于存储是哪一餐
+        var dishTime;
 
         //存储全局url
         var hostURL = ""
@@ -581,14 +590,41 @@
         var dinnerArr = new Array()
         var extraFoodArr = new Array()
 
+        //要等页面渲染完之后才能进行的操作
         $(document).ready(function () {
             $("#calendar").bootstrapDatepickr();
             $("#calendar1").bootstrapDatepickr({ date_format: "d-m-Y" });
             $("#calendar2").bootstrapDatepickr({ date_format: "l, do F Y" });
+
+
+            hour = new Date().getHours()
+            
+            if(hour >=5 && hour <= 12){
+                dishTime = "breakfast";
+                breakfastArr.push(dish);
+            }else if(hour >= 12 && hour <= 14){
+                dishTime = "lunch";
+                lunchArr.push(dish)
+            }else if(hour >= 17 && hour <= 20){
+                dishTime = "dinner";
+                dinnerArr.push(dish)
+            }else{
+                dishTime = "extraFood"
+                extraFoodArr.push(dish)
+            }
+
+            //页面跳转时加入新的饮食
+            var selectElement = $("#"+dishTime).parent().parent().parent()
+            var a = $('<a />').addClass('notShown').html('<em>' + dish + '</em><i></i>').addClass("shown").appendTo(selectElement.children('div'))
+            selectElement.children('div').children('span').addClass('hide');
+            selectElement.find('option:contains(' + dish + ')').prop('selected', true);
         });
+
+
+
     </script>
     <script>
-        //要进行修改
+        //上传新的修改
         $('#edit').click(function () {
             console.log("点击成功");
             var data = {};
@@ -605,7 +641,7 @@
                 url: hostURL + "/adddailyfood",
                 async: false,
                 dataType: 'json',
-                contentType : "application/json",
+                contentType: "application/json",
                 data: jsonData,
                 success: function (data) {
                     alert("数据发送成功");

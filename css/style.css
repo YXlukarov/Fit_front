@@ -10746,3 +10746,11 @@ h3.tt-title{
 	height: 250px;
 	width: 100%;
 }
+
+/* 
+	Dish detail image resize
+*/
+img.dish-image{
+	width: 100%;
+	height: 400px;
+}
