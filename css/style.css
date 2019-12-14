@@ -10789,3 +10789,9 @@ img.recipe-detail-pro{
 	background:#FF9900;
     font-weight: bold;
 }
+
+.scoreColor{
+	color: #fb5b21;
+	font-family: STHeiti;
+	font-weight: 900;
+}
