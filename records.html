@@ -421,7 +421,6 @@
 
     <script>
         var url1 = "http://localhost:8011/alldailyfood";
-
         var breakfastData = "[";
         var lunchData = "[";
         var dinnerData = "[";
@@ -443,7 +442,6 @@
                     dinnerDataList.push(data[i].dinnerCa);
                     otherDataList.push(data[i].othersCa);
                 }
-
                 Highcharts.chart('container', {
                     chart: {
                         type: 'line'
@@ -483,13 +481,10 @@
                         data: otherDataList
                     }]
                 });
-                chart1.xAxis.setData(JSON.parse('{"categories:"' + '"[12,15]"' + '},'));
-
                 // breakfastData += '{"name":' + '"早餐"' + ',"data"":' + browsingBuildingNameMap.get(data[key].name) + "},";
                 // lunchData += '{"name":' + '"中餐"' + ',"data":' + browsingBuildingAddressMap.get(address) + "},";
                 // dinnerData += '{"name":' + '"晚餐"' + ',"data":' + browsingBuildingAreaMap.get(data[key].floorsSpace) + "},";
                 // otherData += '{"name":' + '"加餐"' + ',"data":' + browsingBuildingTotalPriceMap.get(data[key].price) + "},";
-
                 // browsingBuildingNameData = browsingBuildingNameData.substring(0, browsingBuildingNameData.length - 1) + "]";
                 // browsingBuildingAddressData = browsingBuildingAddressData.substring(0, browsingBuildingAddressData.length - 1) + "]";
                 // browsingBuildingAreaData = browsingBuildingAreaData.substring(0, browsingBuildingAreaData.length - 1) + "]";
@@ -503,7 +498,6 @@
                 console.log("error");
             }
         });
-
     //     var chart1 = Highcharts.chart('container', {
     //     chart: {
     //         type: 'line'
@@ -537,41 +531,31 @@
     //         data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
     //     }]
     // });
-
-
     </script>
     <script>
         //获取全局的数据
         var dish = window.sessionStorage.getItem('newDish');
-
         //用于保存选择的日期
         var selectedDate = "20191214";
-
         //用于存储具体的小时
         var hour;
-
         //用于存储是哪一餐
         var dishTime;
-
         //存储全局url
         var hostURL = ""
         $.getJSON("./url.json", function (data) {
             hostURL = data.url
         });
-
         //四个数组用于保存每餐吃的是什么
         var breakfastArr = new Array()
         var lunchArr = new Array()
         var dinnerArr = new Array()
         var extraFoodArr = new Array()
-
         //要等页面渲染完之后才能进行的操作
         $(document).ready(function () {
             $("#calendar").bootstrapDatepickr();
             $("#calendar1").bootstrapDatepickr({ date_format: "d-m-Y" });
             $("#calendar2").bootstrapDatepickr({ date_format: "l, do F Y" });
-
-
             hour = new Date().getHours()
             
             if(hour >=5 && hour <= 12){
@@ -587,16 +571,12 @@
                 dishTime = "extraFood"
                 extraFoodArr.push(dish)
             }
-
             //页面跳转时加入新的饮食
             var selectElement = $("#"+dishTime).parent().parent().parent()
             var a = $('<a />').addClass('notShown').html('<em>' + dish + '</em><i></i>').addClass("shown").appendTo(selectElement.children('div'))
             selectElement.children('div').children('span').addClass('hide');
             selectElement.find('option:contains(' + dish + ')').prop('selected', true);
         });
-
-
-
     </script>
     <script>
         //上传新的修改
