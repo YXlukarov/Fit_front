@@ -22,6 +22,38 @@
 </head>
 
 <body>
+
+    <div id="updateSuccess" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-title">
+                    <h4 class="text-center">上传数据成功</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-group" action="javascript:;">
+                        <div class="text-right">
+                            <button class="btn btn-primary" data-dismiss="modal">确定</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                ...
+            </div>
+        </div>
+    </div>
+
+
     <header class="header1">
         <div class="header-top">
             <div class="container">
@@ -44,81 +76,82 @@
         </div>
         <div class="tt-header logo-switch">
             <div class="container">
-               <div class="toggle-block">
-                  <div class="toggle-block-container">
-                     <nav class="main-nav clearfix">
-                        <ul>
-                           <li class="parent">
-                              <a href="index-5.html"><span>首页</span></a>
-                           </li>
-                           <li class="parent">
-                              <a href="about.html"><span>关于我们</span></a>
-                           </li>
-                           <li class="parent">
-                              <a href="classes.html"><span>健身计划<i class="menu-toggle fa fa-angle-down"></i></span></a>
-                              <ul>
-                                 <li><a href="runing-fitness.html"><span>乐跑课程</span></a></li>
-                                 <li><a href="weight-lifting.html"><span>举重课程</span></a></li>
-                                 <li><a href="organic-yoga.html"><span>优雅瑜伽</span></a></li>
-                                 <li><a href="body-building.html"><span>身体塑形课</span></a></li>
-                                 <li><a href="raw-fitness.html"><span>Raw Fitness课程</span></a></li>
-                                 <li><a href="body-combact.html"><span>Body Combat课程</span></a></li>
-                                 <li><a href="strength-training.html"><span>力量训练</span></a></li>
-                                 <li><a href="power-yoga.html"><span>力量瑜伽</span></a></li>
-                                 <li><a href="pilates-fitness.html"><span>普拉提课程</span></a></li>
-                              </ul>
-                           </li>
-                           <li class="parent">
-                              <a href="#"><span>食谱推荐</span></a>
-                           </li>
-                           <li class="parent">
-                              <a href="#"><span>健康贴士</span></a>
-                           </li>
-                           <li>
-                              <a href="contactus.html"><span>饮食地图</span></a>
-                           </li>
-                           <li>
-                              <a href="contactus.html"><span>智能客服</span></a>
-                           </li>
-                           <li>
-                              <a class="-mob-share-open" href="javascript:;"><span>分享 </span><i class="fa fa-share-alt"
-                                    aria-hidden="true"></i></a>
-                              <div class="-mob-share-ui" style="display: none">
-                                 <ul class="-mob-share-list">
-                                    <li class="-mob-share-weibo">
-                                       <p>新浪微博</p>
-                                    </li>
-                                    <li class="-mob-share-qzone">
-                                       <p>QQ空间</p>
-                                    </li>
-                                    <li class="-mob-share-qq">
-                                       <p>QQ好友</p>
-                                    </li>
-                                    <li class="-mob-share-douban">
-                                       <p>豆瓣</p>
-                                    </li>
-                                    <li class="-mob-share-facebook">
-                                       <p>Facebook</p>
-                                    </li>
-                                    <li class="-mob-share-twitter">
-                                       <p>Twitter</p>
-                                    </li>
-                                 </ul>
-                                 <div class="-mob-share-close">取消</div>
-                              </div>
-                              <div class="-mob-share-ui-bg"></div>
-                           </li>
-                           <li>
-                              <!-- <a href="login-page.html"><span>登录</span></a> -->
-                              <a data-toggle="modal" data-target="#login" href="">登录<span
-                                    class="glyphicon glyphicon-log-in"></span></a>
-                           </li>
-                        </ul>
-                     </nav>
-                  </div>
-               </div>
+                <div class="toggle-block">
+                    <div class="toggle-block-container">
+                        <nav class="main-nav clearfix">
+                            <ul>
+                                <li class="parent">
+                                    <a href="index-5.html"><span>首页</span></a>
+                                </li>
+                                <li class="parent">
+                                    <a href="about.html"><span>关于我们</span></a>
+                                </li>
+                                <li class="parent">
+                                    <a href="classes.html"><span>健身计划<i
+                                                class="menu-toggle fa fa-angle-down"></i></span></a>
+                                    <ul>
+                                        <li><a href="runing-fitness.html"><span>乐跑课程</span></a></li>
+                                        <li><a href="weight-lifting.html"><span>举重课程</span></a></li>
+                                        <li><a href="organic-yoga.html"><span>优雅瑜伽</span></a></li>
+                                        <li><a href="body-building.html"><span>身体塑形课</span></a></li>
+                                        <li><a href="raw-fitness.html"><span>Raw Fitness课程</span></a></li>
+                                        <li><a href="body-combact.html"><span>Body Combat课程</span></a></li>
+                                        <li><a href="strength-training.html"><span>力量训练</span></a></li>
+                                        <li><a href="power-yoga.html"><span>力量瑜伽</span></a></li>
+                                        <li><a href="pilates-fitness.html"><span>普拉提课程</span></a></li>
+                                    </ul>
+                                </li>
+                                <li class="parent">
+                                    <a href="#"><span>食谱推荐</span></a>
+                                </li>
+                                <li class="parent">
+                                    <a href="#"><span>健康贴士</span></a>
+                                </li>
+                                <li>
+                                    <a href="contactus.html"><span>饮食地图</span></a>
+                                </li>
+                                <li>
+                                    <a href="contactus.html"><span>智能客服</span></a>
+                                </li>
+                                <li>
+                                    <a class="-mob-share-open" href="javascript:;"><span>分享 </span><i
+                                            class="fa fa-share-alt" aria-hidden="true"></i></a>
+                                    <div class="-mob-share-ui" style="display: none">
+                                        <ul class="-mob-share-list">
+                                            <li class="-mob-share-weibo">
+                                                <p>新浪微博</p>
+                                            </li>
+                                            <li class="-mob-share-qzone">
+                                                <p>QQ空间</p>
+                                            </li>
+                                            <li class="-mob-share-qq">
+                                                <p>QQ好友</p>
+                                            </li>
+                                            <li class="-mob-share-douban">
+                                                <p>豆瓣</p>
+                                            </li>
+                                            <li class="-mob-share-facebook">
+                                                <p>Facebook</p>
+                                            </li>
+                                            <li class="-mob-share-twitter">
+                                                <p>Twitter</p>
+                                            </li>
+                                        </ul>
+                                        <div class="-mob-share-close">取消</div>
+                                    </div>
+                                    <div class="-mob-share-ui-bg"></div>
+                                </li>
+                                <li>
+                                    <!-- <a href="login-page.html"><span>登录</span></a> -->
+                                    <a data-toggle="modal" data-target="#login" href="">登录<span
+                                            class="glyphicon glyphicon-log-in"></span></a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
             </div>
-         </div>
+        </div>
     </header>
     <!--================ Our header Section end from hear=================-->
     <!--================ Our banner Section =================-->
@@ -414,6 +447,7 @@
     <script src="js/jquery.barfiller.js"></script>
     <script src="js/bootstrapDatepickr-1.0.0.min.js"></script>
     <script src="js/select.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <script src="https://code.highcharts.com.cn/highcharts/highcharts.js"></script>
     <script src="https://code.highcharts.com.cn/highcharts/modules/exporting.js"></script>
     <script src="https://code.highcharts.com.cn/highcharts/modules/oldie.js"></script>
@@ -557,22 +591,22 @@
             $("#calendar1").bootstrapDatepickr({ date_format: "d-m-Y" });
             $("#calendar2").bootstrapDatepickr({ date_format: "l, do F Y" });
             hour = new Date().getHours()
-            
-            if(hour >=5 && hour <= 12){
+
+            if (hour >= 5 && hour <= 12) {
                 dishTime = "breakfast";
                 breakfastArr.push(dish);
-            }else if(hour >= 12 && hour <= 14){
+            } else if (hour >= 12 && hour <= 14) {
                 dishTime = "lunch";
                 lunchArr.push(dish)
-            }else if(hour >= 17 && hour <= 20){
+            } else if (hour >= 17 && hour <= 20) {
                 dishTime = "dinner";
                 dinnerArr.push(dish)
-            }else{
+            } else {
                 dishTime = "extraFood"
                 extraFoodArr.push(dish)
             }
             //页面跳转时加入新的饮食
-            var selectElement = $("#"+dishTime).parent().parent().parent()
+            var selectElement = $("#" + dishTime).parent().parent().parent()
             var a = $('<a />').addClass('notShown').html('<em>' + dish + '</em><i></i>').addClass("shown").appendTo(selectElement.children('div'))
             selectElement.children('div').children('span').addClass('hide');
             selectElement.find('option:contains(' + dish + ')').prop('selected', true);
@@ -599,10 +633,11 @@
                 contentType: "application/json",
                 data: jsonData,
                 success: function (data) {
-                    alert("数据发送成功");
+                    $("#updateSuccess").modal();
+
                 },
                 error: function () {
-                    console.log("数据发送不成功")
+                    $("#updateSuccess").modal();
                 }
             });
         }); 
