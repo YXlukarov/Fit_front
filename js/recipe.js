@@ -180,23 +180,23 @@ $("#changeRecipe2").click(function(){
 
 $("#moreinfo1").click(function(){
     var dishId = $("#d1id").text();
-    window.location.replace("http://127.0.0.1:5500/events-details.html?recipeId=" + dishId);
+    window.location.replace("events-details.html?recipeId=" + dishId);
 })
 $("#moreinfo2").click(function(){
     var dishId = $("#d2id").text();
-    window.location.replace("http://127.0.0.1:5500/events-details.html?recipeId=" + dishId);
+    window.location.replace("events-details.html?recipeId=" + dishId);
 })
 $("#moreinfo3").click(function(){
     var dishId = $("#d3id").text();
-    window.location.replace("http://127.0.0.1:5500/events-details.html?recipeId=" + dishId);
+    window.location.replace("events-details.html?recipeId=" + dishId);
 })
 $("#moreinfo4").click(function(){
     var dishId = $("#d4id").text();
-    window.location.replace("http://127.0.0.1:5500/events-details.html?recipeId=" + dishId);
+    window.location.replace("events-details.html?recipeId=" + dishId);
 })
 $("#moreinfo5").click(function(){
     var dishId = $("#d5id").text();
-    window.location.replace("http://127.0.0.1:5500/events-details.html?recipeId=" + dishId);
+    window.location.replace("events-details.html?recipeId=" + dishId);
 })
 
 //获取url中的参数
@@ -206,7 +206,7 @@ function getUrlParam(name) {
     var r = window.location.search.substr(1).match(reg);//匹配目标参数
     if (r != null) return unescape(r[2]); return null;//返回参数值
 }
-var url_detail = "http://localhost:8011/recipedetail/";
+var url_detail = "recipedetail/";
 $(".banner-ready-sign").ready(function(){
     var id = getUrlParam("recipeId");
     var request_url = url_detail + id;

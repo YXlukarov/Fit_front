@@ -10790,7 +10790,12 @@ img.recipe-detail-pro{
     font-weight: bold;
 }
 
-
 /* 
 	Lesson payment div
  */
+
+.scoreColor{
+	color: #fb5b21;
+	font-family: STHeiti;
+	font-weight: 900;
+}

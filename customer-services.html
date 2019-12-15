@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+        body {
+            background-image:url(bg3.png);
+            background-size: cover;
+        }
+        .talk_con{
+            width:600px;
+            height:540px;
+            position: absolute;
+            left: 200px;
+            top: 100px;
+            border:1px solid #666;
+            /*margin:50px auto 0;*/
+            background:#f9f9f9;
+            background:rgba(255,255,255,0.6);
+            border-radius:10px;
+            /*filter:alpha(Opacity=60);*/
+            /*-moz-opacity:0.6;*/
+            /*opacity:0.6;*/
+        }
+        .talk_show{
+            width:580px;
+            height:420px;
+            border:1px solid #666;
+            background:#fff;
+            background:rgba(160,160,160,0.5);
+            margin:10px auto 0;
+            overflow:auto;
+        }
+        .talk_input{
+            width:580px;
+            margin:10px auto 0;
+        }
+        .talk_title{
+            margin:10px auto 0;
+        }
+        .talk_title span{
+            display:inline-block;
+            color:#666666;
+            padding: 5px 10px;
+            font-weight: bold;
+        }
+        .whotalk{
+            width:80px;
+            height:30px;
+            float:left;
+            outline:none;
+        }
+        .talk_word{
+            width:420px;
+            height:26px;
+            padding:0px;
+            float:left;
+            margin-left:10px;
+            outline:none;
+            text-indent:10px;
+        }        
+        .talk_sub{
+            width:56px;
+            height:30px;
+            float:left;
+            /*margin-left:10px;*/
+            margin:7px 0px 10px 10px;
+        }
+        .atitle{
+            margin:1px 10px 1px 10px;
+            font-size: 8px;
+            font-weight: bold;
+        }
+        .atalk{
+           margin:1px 10px 10px 10px;
+        }
+        .atalk span{
+            display:inline-block;
+            background:#0181cc;
+            border-radius:10px;
+            color:#fff;
+            padding:5px 10px;
+        }
+        .btitle{
+            margin:1px 20px 1px 10px;
+            font-size: 8px;
+            font-weight: bold;
+            text-align:right;
+        }
+        .btalk{
+            margin:1px 10px 10px 10px;
+            text-align:right;
+        }
+        .btalk span{
+            display:inline-block;
+            background:#ef8201;
+            border-radius:10px;
+            color:#fff;
+            padding:5px 10px;
+        }
+    </style>
+    <script src="jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        var inputWords='';
+        function sb(){
+            var text = document.getElementById("talkwords").value;
+            //alert("函数执行");
+            //var key = document.getElementById("key").value;
+            //document.getElementById("text").value = '';
+            $.ajax({
+                    url:"http://www.tuling123.com/openapi/api",//接口地址
+                    type:"post",
+                    dataType:"json",
+                    data:{
+                        key:'29e155d78ab1429b87db328fe75000ce',//APIKey
+                        info:text//用户文本
+                    },
+                    success:function(data,status){
+                        if(data.code == "100000"){//成功
+                            // var show = document.getElementById("show");
+                            // var m = "<li><div><span>我：</span><span>" + text +"</span></div></li>"
+                            // var t = "<li><div><span>机器人：</span><span>" + data.text +"</span></div></li>";
+                            // show.innerHTML = show.innerHTML +m + t;
+                            // // var scrollTop = document.body.scrollTop + document.documentElement.scrollTop;
+                            // // show.scrollTop = show.scrollHeight;
+                            // $("#dShow").scrollTop(show.scrollHeight);
+                            var Words = document.getElementById("words");
+                            var TalkWords = document.getElementById("talkwords");
+                            var str = '';
+                            str = '<div class="row" style="width: 570px; margin-left: 0; margin-right: 0;"><div class="atitle" style="float: right;"><img class="img-circle" src="kefu.jpg" style = "width: 30px; height: 30px" alt="头像"/><div>客 服</div></div><div class="btalk" style="float: right;"><span id="bsay">' + data.text +'</span></div></div>' ;
+                            Words.innerHTML = Words.innerHTML + str;
+                            var scrollDom = document.getElementById('words');
+                            scrollDom.scrollTop = scrollDom.scrollHeight;
+                        }
+                        if(data.code == "200000"){//成功
+                            // var show = document.getElementById("show");
+                            // var m = "<li><div><span>我：</span><span>" + text +"</span></div></li>"
+                            // var t = "<li><div><span>机器人：</span><span>" + data.text +"</span></div></li>";
+                            // var u = "<li><div><span>机器人：</span><span><a href="+data.url+">" + "为你找到的连接"+"</a></span></div></li>";
+                            // show.innerHTML = show.innerHTML +m + t +u;
+                            // // var scrollTop = document.body.scrollTop + document.documentElement.scrollTop;
+                            // // show.scrollTop = show.scrollHeight;
+                            // $("#dShow").scrollTop(show.scrollHeight);
+                            var Words = document.getElementById("words");
+                            var TalkWords = document.getElementById("talkwords");
+                            var str = '';
+                            str = '<div class="row" style="width: 570px; margin-left: 0; margin-right: 0;"><div class="atitle" style="float: right;"><img class="img-circle" src="kefu.jpg" style = "width: 30px; height: 30px" alt="头像"/><div>客 服</div></div><div class="btalk" style="float: right;"><span id="bsay">' + data.text +'</span></div></div>' ;
+                            Words.innerHTML = Words.innerHTML + str;
+                            var scrollDom = document.getElementById('words');
+                            scrollDom.scrollTop = scrollDom.scrollHeight;
+                        }
+                        if(data.code == "40001"){//成功
+                            alert("不好意思，输入的apikey有问题，请检查！！");
+                        }
+                        // if(data.code == "40002" && text != null ){//成功
+                        //     alert("不好意思，输入的消息有问题，请检查！！");
+                        // }
+                        if(data.code == "40004"){//成功
+                            alert("不好意思，当天聊天次数已用完！！");
+                        }
+                    }
+                });
+        }
+        window.onload = function(){
+            var Words = document.getElementById("words");
+            var Who = document.getElementById("who");
+            var TalkWords = document.getElementById("talkwords");
+            var TalkSub = document.getElementById("talksub");
+            ws =new WebSocket("ws://127.0.0.1:8080");
+
+            ws.onopen = function (ev) { //若是连接成功，onopen函数会执行
+                console.log('连接成功');
+                //ws.send("这本书的质量真差");
+            }
+
+            TalkSub.onclick = function(){
+	            //定义空字符串
+                var str = "";
+                if(TalkWords.value == ""){
+	                 // 消息为空时弹窗
+                    alert("消息不能为空");
+                    return;
+                }
+                if(Who.value == 0){
+	                //如果Who.value为0n那么是 A说
+                    str = '<div class="row" style="width: 570px; margin-left: 0; margin-right: 0; margin-top: 10px;"><div class="atitle" style="float: left;"><img class="img-circle" src="lufei.jpeg" style = "width: 30px; height: 30px" alt="头像"/><div>用 户</div></div><div class="atalk" style="float: left;"><span id="asay">' + TalkWords.value +'</span></div></div>';
+                    if(TalkWords.value.indexOf("你好") != -1 || TalkWords.value.indexOf("您好") != -1){
+                        str += '<div class="row" style="width: 570px; margin-left: 0; margin-right: 0;"><div class="atitle" style="float: right;"><img class="img-circle" src="kefu.jpg" style = "width: 30px; height: 30px" alt="头像"/><div>客 服</div></div><div class="btalk" style="float: right;"><span id="bsay">' + '亲，您好，有什么我可以帮助您的吗？' +'</span></div></div>' ;
+                        Words.innerHTML = Words.innerHTML + str;
+                        var scrollDom = document.getElementById('words');
+                        scrollDom.scrollTop = scrollDom.scrollHeight;
+                    }
+                    else{
+                        Words.innerHTML = Words.innerHTML + str;
+                        sb();
+                        var scrollDom = document.getElementById('words');
+                        scrollDom.scrollTop = scrollDom.scrollHeight;
+                    }
+                }
+                else{
+                    str = '<div class="btalk"><span>B说 :' + TalkWords.value +'</span></div>' ;
+                    Words.innerHTML = Words.innerHTML + str;
+                    var scrollDom = document.getElementById('words');
+                    scrollDom.scrollTop = scrollDom.scrollHeight;
+                }
+                //Words.innerHTML = Words.innerHTML + str;
+                $("#talkwords").val("");
+            }
+            ws.onmessage = function (ev) {
+                console.log(ev.data);
+                str = "";
+                if(ev.data == 1){
+                    if (inputWords.indexOf("内容一般") != -1 || inputWords.indexOf("无聊") != -1 || inputWords.indexOf("睡") != -1 || inputWords.indexOf("没意思") != -1) {
+                        str = '<div class="btalk"><span>' + '对不起给您带来了不好的就读体验，我们也致力于为读者提供更丰富更有内容的书籍，如果这类书籍让您感到无聊或无趣，我们推荐以下书籍给您：' +'<a href=\'javascript:clickTuijian1();\'>《解忧杂货店》</a><a href=\'javascript:clickTuijian2();\'>《岛》</a><a href=\'javascript:clickTuijian3();\'>《活着》</a></span></div>';
+                    }
+                    else if (inputWords.indexOf("字太小") != -1 || inputWords.indexOf("字小") != -1 || inputWords.indexOf("字很小") != -1 || inputWords.indexOf("字太大") != -1 || inputWords.indexOf("字大") != -1 || inputWords.indexOf("字很大") != -1) {
+                        str = '<div class="btalk"><span>' + '对不起给您带来了不好的就读体验，该书的排版在印刷时就已经制定了，小店理解亲对于阅读体验的重视，我们会和出版社反映您对于字体大小的建议呢！^_^' +'</span></div>';
+                    }
+                    else if (inputWords.indexOf("字数") != -1 || inputWords.indexOf("字少") != -1 || inputWords.indexOf("字太少") != -1 || inputWords.indexOf("字太多") != -1 || inputWords.indexOf("字多") != -1 || inputWords.indexOf("页数少") != -1) {
+                        str = '<div class="btalk"><span>' + '对不起给您带来了不好的就读体验，由于该书的内容排版原因，可能让您对于该书字数不太满意，我们会和作者反映您的建议呢！^_^' +'</span></div>';
+                    }
+                    else if (inputWords.indexOf("太小") != -1 || inputWords.indexOf("少") != -1 || inputWords.indexOf("太大") != -1 || inputWords.indexOf("很小") != -1) {
+                        str = '<div class="btalk"><span>' + '对不起给您带来了不好的就读体验，可能出版社的排版让您不太满意，出版社在这方面的不足我们会和他们进行积极的沟通，感谢您的反馈！^_^' +'</span></div>';
+                    }
+                    else if (inputWords.indexOf("不深入") != -1 || inputWords.indexOf("浅显") != -1 || inputWords.indexOf("太浅") != -1 || inputWords.indexOf("主题不明") != -1 || inputWords.indexOf("跑题") != -1 || inputWords.indexOf("没有中心") != -1) {
+                        str = '<div class="btalk"><span>' + '对不起给您带来了不好的就读体验，您对于内容主题的建议有一定道理，我们也会和作者积极的沟通，非常感谢您！^_^' +'</span></div>';
+                    }
+                    else{
+                        str = '<div class="btalk"><span>' + '对不起给您带来了不好的就读体验，非常遗憾我们书籍并没有让您满意，在此我们向您推荐以下新书，希望您能够从这些书中感受到知识的魅力：' +'<a href=\'javascript:clickTuijian1();\'>《解忧杂货店》</a><a href=\'javascript:clickTuijian2();\'>《岛》</a><a href=\'javascript:clickTuijian3();\'>《活着》</a></span></div>';
+                    }
+                }
+                else if(ev.data == 2){
+                    if (inputWords.indexOf("发货") != -1 || inputWords.indexOf("没货") != -1 || inputWords.indexOf("没发") != -1 || inputWords.indexOf("缺货") != -1) {
+                        str = '<div class="btalk"><span>' + '对不起给您带来了麻烦，您选择的图书非常的抢手，我们已经尽力备货，货源充足会立刻发货哦，请您耐心等待呢！^_^' +'</span></div>';
+                    }
+                    else if (inputWords.indexOf("退货") != -1 || inputWords.indexOf("退了") != -1 ) {
+                        str = '<div class="btalk"><span>' + '对不起给您带来了麻烦，我们都在全力满足亲的要求，希望亲能谅解一下呢，如果亲真的还是觉得不满意可以参照下面的流程进行退货哦' +'<a href=\'javascript:clickTuihuo();\'>如何退货</a></span></div>';
+                    }
+                    else if (inputWords.indexOf("服务差") != -1 || inputWords.indexOf("什么服务") != -1 || inputWords.indexOf("服务态度") != -1) {
+                        str = '<div class="btalk"><span>' + '对不起给您带来了麻烦，如果有地方冒犯了您，我在此向您真诚的道歉，我们本着客户至上的态度竭诚为您服务！' +'</span></div>';
+                    }
+                    else{
+                        str = '<div class="btalk"><span>' + '对不起给您带来了麻烦，我为我们给您带来的不便而真诚的道歉，一直以来我们都以客户为本，真诚奉献，请您也相信我们会不断提高自身的服务质量，带给您更好的体验！' +'</span></div>';
+                    }
+                }
+                else if(ev.data == 3){
+                    if (inputWords.indexOf("旧") != -1 || inputWords.indexOf("不是新的") != -1 || inputWords.indexOf("旧书") != -1 || inputWords.indexOf("不是新书") != -1) {
+                        str = '<div class="btalk"><span>' + '对不起给您带来了麻烦，出现这样的问题是我们的疏忽，我们愿意免费为您更换，并赔偿您一张通用代金券，再次向您真诚的道歉！' +'</span></div>';
+                    }
+                    else if (inputWords.indexOf("掉页") != -1 || inputWords.indexOf("掉落") != -1 || inputWords.indexOf("撕坏") != -1) {
+                        str = '<div class="btalk"><span>' + '对不起给您带来了麻烦，亲可以将具体的图片发给我们进行鉴定，如果确实是纸张的问题，我们会为您免费更换呢！' +'</span></div>';
+                    }
+                    else if (inputWords.indexOf("包装") != -1 || inputWords.indexOf("装订") != -1 || inputWords.indexOf("封面") != -1) {
+                        str = '<div class="btalk"><span>' + '对不起给您带来了麻烦，如果出现包装的问题，亲可以将照片发给我们客服进行处理哦！' +'</span></div>';
+                    }
+                    else if (inputWords.indexOf("印刷") != -1){
+                        str = '<div class="btalk"><span>' + '对不起给您带来了麻烦，出版社出版的每一本书印刷质量不同，如果出现严重的印刷问题我们可以帮亲到出版社免费调换哦！' +'</span></div>';
+                    }
+                    else{
+                        str = '<div class="btalk"><span>' + '对不起给您带来了麻烦，我们也在积极和出版社合作努力提高产品质量，希望亲能谅解一下呢，如果亲真的还是觉得不满意可以参照下面的流程进行退货哦' +'<a href=\'javascript:clickTuihuo();\'>如何退货</a></span></div>';
+                    }
+                }
+                else if(ev.data == 4){
+                    str = '<div class="btalk"><span>' + '对不起给您带来了麻烦，您选择的图书非常的抢手，我们已经尽快备货发货，路途遥远运输需要时间也请您耐心等待呢！^_^' +'<a href=\'javascript:clickWuliu();\'>物流状态查询</a></span></div>';
+                }
+                else if(ev.data == 5){
+                    str = '<div class="btalk"><span>' + '对不起让您感到不满，该书的定价我们是严格按照出版商的规定来的哦，活动优惠也都是有时效性的，希望亲能够理解呢！' +'</span></div>';
+                }
+                else if(ev.data == 6){
+                    str = '<div class="btalk"><span>' + '对不起让您感到不满，我们会和酒店积极的沟通，提高他们的服务质量，全力为您提供满意的服务环境！' +'</span></div>';
+                }
+                else if(ev.data == 7){
+                    if (inputWords.indexOf("厕所") != -1 || inputWords.indexOf("卫生间") != -1 || inputWords.indexOf("浴室") != -1 || inputWords.indexOf("洗手间") != -1) {
+                        str = '<div class="btalk"><span>' + '对不起让您感到不满，卫生间等问题我们会立即和酒店反馈，酒店会有负责人联系您，再次向您表示歉意！' +'</span></div>';
+                    }
+                    else if (inputWords.indexOf("电视") != -1) {
+                        str = '<div class="btalk"><span>' + '对不起让您感到不满，电视机等问题我们会立即和酒店反馈，酒店会有负责人联系您，再次向您表示歉意！' +'</span></div>';
+                    }
+                    else if (inputWords.indexOf("空调") != -1) {
+                        str = '<div class="btalk"><span>' + '对不起让您感到不满，空调等问题我们会立即和酒店反馈，酒店会有负责人联系您，再次向您表示歉意！' +'</span></div>';
+                    }
+                    else if (inputWords.indexOf("霉") != -1){
+                        str = '<div class="btalk"><span>' + '对不起让您感到不满，如果有发霉的气味可能是酒店的清洁不到位，我们会立即向酒店反馈，酒店会有负责人联系您，再次向您表示歉意！' +'</span></div>';
+                    }
+                    else if (inputWords.indexOf("房间小") != -1 || inputWords.indexOf("房间太小") != -1 || inputWords.indexOf("拥挤") != -1 || inputWords.indexOf("房间很小") != -1){
+                        str = '<div class="btalk"><span>' + '对不起让您感到不满，该酒店的房间都是标准型号的呢，不同的酒店建造时分配的不同，亲可以选择更高级的房间进行体验哦，再次向您表示歉意！' +'</span></div>';
+                    }
+                    else {
+                        str = '<div class="btalk"><span>' + '对不起让您感到不满，我们也在和酒店积极地沟通去提高设施质量，希望在不久的未来我们能为您提供更满意的服务！' +'</span></div>';
+                    }
+                }
+                else if(ev.data == 8){
+                    if (inputWords.indexOf("吵") != -1 || inputWords.indexOf("噪音") != -1 || inputWords.indexOf("声音") != -1 ) {
+                        str = '<div class="btalk"><span>' + '对不起让您感到不满，环境噪音的问题我们已经和酒店反馈了，酒店也会努力的去和周围进行沟通尽量降低噪音，避免打扰您的休息！' +'</span></div>';
+                    }
+                    else if (inputWords.indexOf("交通") != -1 || inputWords.indexOf("偏僻") != -1 || inputWords.indexOf("太远") != -1 ) {
+                        str = '<div class="btalk"><span>' + '对不起让您感到不满，酒店的地理位置可能并不是特别出色，酒店会尽量满足您的交通出行要求，为您提供合理的建议！' +'</span></div>';
+                    }
+                    else{
+                        str = '<div class="btalk"><span>' + '对不起让您感到不满，我们也在加强周边建设，争取为您提供舒适满意的酒店环境与服务！' +'</span></div>';
+                    }
+                }
+                else if(ev.data == 0){
+                    str = '<div class="btalk"><span>' + '感谢您对于我们的支持，我们一定竭尽全力做到更好，不断提高自身的服务质量，为您提供更好的服务！' +'</span></div>';
+                }
+                else{
+                    str = '<div class="btalk"><span>' + '对不起让您感到不满，酒店按照房间的设施标准进行定价，活动优惠也都是有时效性的，希望亲能够理解呢！' +'</span></div>';
+                }
+                //str = '<div class="btalk"><span>B说 :' + ev.data +'</span></div>' ;
+                Words.innerHTML = Words.innerHTML + '<div class="btitle">客 服</div>';
+                Words.innerHTML = Words.innerHTML + str;
+                var scrollDom = document.getElementById('words');
+                scrollDom.scrollTop = scrollDom.scrollHeight;
+
+            }
+        }
+        function clickTest(){
+            var Words = document.getElementById("words");
+            var TalkWords = document.getElementById("talkwords");
+            var str = "";
+
+            str = '<div class="btitle">客 服</div><div class="btalk"><span>B说 :' + 'Hello' +'</span></div>' ;
+            Words.innerHTML = Words.innerHTML + str;
+            var scrollDom = document.getElementById('words');
+            scrollDom.scrollTop = scrollDom.scrollHeight;
+
+        }
+        function clickWuliu(){
+            var Words = document.getElementById("words");
+            var TalkWords = document.getElementById("talkwords");
+            var str = "";
+
+            str = '<div class="atitle">用 户</div><div class="atalk"><span>' + '物流状态查询' +'</span></div><div class="btitle">客 服</div><div class="btalk"><span>' + '物流状态：由【广东深圳转运中心】发往【湖南长沙转运中心】' +'</span></div>' ;
+            Words.innerHTML = Words.innerHTML + str;
+            var scrollDom = document.getElementById('words');
+            scrollDom.scrollTop = scrollDom.scrollHeight;
+
+        }
+        function clickTuihuo(){
+            var Words = document.getElementById("words");
+            var TalkWords = document.getElementById("talkwords");
+            var str = "";
+
+            str = '<div class="atitle">用 户</div><div class="atalk"><span>' + '如何退货' +'</span></div><div class="btitle">客 服</div><div class="btalk"><span>' + '【已买到的宝贝】->【我的订单】->【申请退货】->【选择退货理由】->【根据需要输入相应信息】->【寄出货品】->【填写物流单号】->【等待商家确认收货】' +'</span></div>' ;
+            Words.innerHTML = Words.innerHTML + str;
+            var scrollDom = document.getElementById('words');
+            scrollDom.scrollTop = scrollDom.scrollHeight;
+
+        }
+        function clickTuijian1(){
+            var Words = document.getElementById("words");
+            var TalkWords = document.getElementById("talkwords");
+            var str = "";
+
+            str = '<div class="atitle">用 户</div><div class="atalk"><span>' + '《解忧杂货店》' +'</span></div><div class="btitle">客 服</div><div class="btalk"><span>' + '该书讲述了在僻静街道旁的一家杂货店，只要写下烦恼投进店前门卷帘门的投信口，第二天就会在店后的牛奶箱里得到回答：因男友身患绝症，年轻女孩月兔在爱情与梦想间徘徊；松冈克郎为了音乐梦想离家漂泊，却在现实中寸步难行；少年浩介面临家庭巨变，挣扎在亲情与未来的迷茫中……他们将困惑写成信投进杂货店，奇妙的事情随即不断发生。' +'</span></div>' ;
+            Words.innerHTML = Words.innerHTML + str;
+            var scrollDom = document.getElementById('words');
+            scrollDom.scrollTop = scrollDom.scrollHeight;
+
+        }
+        function clickTuijian2(){
+            var Words = document.getElementById("words");
+            var TalkWords = document.getElementById("talkwords");
+            var str = "";
+
+            str = '<div class="atitle">用 户</div><div class="atalk"><span>' + '《岛》' +'</span></div><div class="btitle">客 服</div><div class="btalk"><span>' + '《岛》讲述了希腊克里特岛上以佩特基斯家族为代表和麻风病抗争的故事。佩特基斯家族由绝望到希望，由痛苦到光明，一步步前行、寻找，直到重获新生。' +'</span></div>' ;
+            Words.innerHTML = Words.innerHTML + str;
+            var scrollDom = document.getElementById('words');
+            scrollDom.scrollTop = scrollDom.scrollHeight;
+
+        }
+        function clickTuijian3(){
+            var Words = document.getElementById("words");
+            var TalkWords = document.getElementById("talkwords");
+            var str = "";
+
+            str = '<div class="atitle">用 户</div><div class="atalk"><span>' + '《活着》' +'</span></div><div class="btitle">客 服</div><div class="btalk"><span>' + '《活着》是作家余华的代表作之一，讲述了在大时代背景下，随着内战、三反五反，大跃进，文化大革命等社会变革，徐福贵的人生和家庭不断经受着苦难，到了最后所有亲人都先后离他而去，仅剩下年老的他和一头老牛相依为命。' +'</span></div>' ;
+            Words.innerHTML = Words.innerHTML + str;
+            var scrollDom = document.getElementById('words');
+            scrollDom.scrollTop = scrollDom.scrollHeight;
+
+        }
+
+
+    </script>
+<!--    <script>-->
+<!--        ws =new WebSocket("ws://127.0.0.1:8080");-->
+<!--        ws.onopen = function (ev) { //若是连接成功，onopen函数会执行-->
+<!--            console.log('连接成功');-->
+<!--            //ws.send("这本书的质量真差");-->
+<!--        }-->
+<!--        ws.onmessage = function (ev) {-->
+<!--            console.log(ev.data);-->
+<!--        }-->
+<!--    </script>-->
+</head>
+<body>
+    <div class="talk_con">
+        <div class="talk_title">
+            <span>智能客服小秘书</span>
+        </div>
+        <div class="talk_show container" id="words">
+<!--             <div class="row" style="width: 570px; margin-left: 0; margin-right: 0; margin-top: 10px;">
+                <div class="atitle" style="float: left;">
+                    <img class="img-circle" src="lufei.jpeg" style = "width: 30px; height: 30px" alt="头像"/>
+                    <div>用 户</div>
+                </div>
+                <div class="atalk" style="float: left;"><span id="asay">吃饭了吗？</span></div>
+            </div>
+            <div class="row" style="width: 570px; margin-left: 0; margin-right: 0;">
+                <div class="atitle" style="float: right;">
+                    <img class="img-circle" src="kefu.jpg" style = "width: 30px; height: 30px" alt="头像"/>
+                    <div>客 服</div>
+                </div>
+                <div class="btalk" style="float: right;"><span id="bsay">还没呢，你呢？</span></div>
+            </div> -->
+        </div>
+        <form class="form-inline" style="margin-left: 20px; margin-top: 10px;">
+            <div class="form-group mb-6">
+                <select class="whotalk" id="who">
+                    <option value="0">用户</option>
+                </select>
+            </div>
+            <div class="form-group mx-sm-6 mb-6">
+              <label for="inputPassword2" class="sr-only" >请输入发送的信息</label>
+              <input type="text" class="form-control input-lg" id="talkwords" style="width: 400px; height: 40px" id="inputPassword2" placeholder="请输入发送的信息">
+            </div>
+            <button type="button" class="btn btn-primary mb-2" id="talksub">发送</button>
+          </form>
+        <!-- <div class="talk_input">
+            <select class="whotalk" id="who">
+                <option value="0">用户</option>
+            </select>
+            <input type="text" class="talk_word" id="talkwords">
+            <input type="button" value="发送" class="talk_sub" id="talksub">
+        </div> -->
+    </div>
+</body>
+</html>
