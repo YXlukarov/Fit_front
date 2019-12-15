@@ -5,6 +5,7 @@
       <meta name="format-detection" content="telephone=no" />
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+      <meta http-equiv="Access-Control-Allow-Origin" content="*" />
       <link href="css/bootstrap.min.css" rel="stylesheet">
       <link rel="stylesheet" href="css/font-awesome.min.css">
       <link href="css/animate.css" rel="stylesheet">
@@ -163,16 +164,35 @@
                            <h4>课程难度:<span> 高</span></h4>
                            <h4>课程量: <span>12 </span></h4>
                            <div class="book-nows">
-                              <a href="appointment.html">
+                              <a>
                                  <div class="sim-button button8">
-                                    <span>现在学习</span>
+                                    <span class="book-lesson" data-toggle="modal" data-target="#payModal">现在学习</span>
                                     <!-- 连接数据库判断是否有该课程，有则获取该元素并将内容改成Booked -->
+                                    
                                  </div>
                               </a>
                            </div>
                         </div>
                      </div>
                   </div>
+                  <div class="modal fade" id="payModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                     <div class="modal-dialog">
+                        <div class="modal-content">
+                           <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                 &times;
+                              </button>
+                              <h4 class="modal-title" id="myModalLabel">
+                                 请支付
+                              </h4>
+                           </div>
+                           <div class="modal-body lesson-pay">
+                              
+                           </div>
+                        </div><!-- /.modal-content -->
+                     </div><!-- /.modal -->
+                  </div>
+                  
                   <div class="col-sm-12 col-md-9 main-sarvices">
                      <div class="imagesss">
                         <div class="image-opacity-on-hover image-zoom-on-hover">
@@ -367,5 +387,18 @@
       <script src="js/owl.carousel.min.js"></script>
       <script src="js/jquery.magnific-popup.min.js"></script>
       <script src="js/jquery.barfiller.js"></script>
+      <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <script>
+         var url = "http://localhost:8011/payByAlipay";
+         $(".book-lesson").click(function(){
+            $.ajax({
+               type: "POST",
+               url: url
+            }).success(function(msg){
+               console.log(msg);
+               $("div.lesson-pay").html(msg)
+            })
+         })
+      </script>
    </body>
 </html>
