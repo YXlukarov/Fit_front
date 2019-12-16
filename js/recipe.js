@@ -206,7 +206,7 @@ function getUrlParam(name) {
     var r = window.location.search.substr(1).match(reg);//匹配目标参数
     if (r != null) return unescape(r[2]); return null;//返回参数值
 }
-var url_detail = "recipedetail/";
+var url_detail = "http://localhost:8011/recipedetail/";
 $(".banner-ready-sign").ready(function(){
     var id = getUrlParam("recipeId");
     var request_url = url_detail + id;

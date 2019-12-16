@@ -10799,3 +10799,23 @@ img.recipe-detail-pro{
 	font-family: STHeiti;
 	font-weight: 900;
 }
+
+/* 
+	Mainpage news image
+*/
+img.news1{
+	width: 100%;
+	height: 300px;
+}
+img.news2{
+	width: 100%;
+	height: 300px;
+}
+
+/* 
+	Mainpage logo
+*/
+img.index-logo{
+	width: 158px;
+	height: 37px;
+}

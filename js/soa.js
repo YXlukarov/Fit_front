@@ -71,10 +71,10 @@ $(".latest_news").ready(function(){
                 $("p.news1").text(newsList.articles[1].description);
                 $("a.news1").attr("href",newsList.articles[1].url);
                 //
-                $("img.news2").attr("src",newsList.articles[4].urlToImage);
-                $("h3.news2").text(newsList.articles[4].title);
-                $("p.news2").text(newsList.articles[4].description);
-                $("a.news2").attr("href",newsList.articles[4].url);
+                $("img.news2").attr("src",newsList.articles[7].urlToImage);
+                $("h3.news2").text(newsList.articles[7].title);
+                $("p.news2").text(newsList.articles[7].description);
+                $("a.news2").attr("href",newsList.articles[7].url);
                 //
                 $("a.news3").attr("href",newsList.articles[2].url);
                 $("a.news3").text(newsList.articles[2].title);
