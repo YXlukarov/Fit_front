@@ -10819,3 +10819,18 @@ img.index-logo{
 	width: 158px;
 	height: 37px;
 }
+
+/* 
+空气指数的排列
+*/
+.air{
+	position: absolute;
+	border: 0;
+	top: 0px;
+	right: 100px;
+	height: 0px;
+	color: whitesmoke;
+	font-weight: bolder;
+	padding-top: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+}
