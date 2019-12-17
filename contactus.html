@@ -20,30 +20,12 @@
    </head>
    <body>
       <header class="header1">
-         <div class="header-top">
-            <div class="container">
-               <div class="header_top_inner">
-                  <div class="pull-left">
-                     <a href=""><i class="fa fa-phone"></i>+(1800) 5683248</a> 
-                     <a href="#"><i class="fa fa-envelope-o"></i>info@fitaza.com</a> 
-                     <a><i class="fa fa-clock-o"></i>Mon-Sat: 9 am to 5 pm </a>
-                  </div>
-                  <div class="pull-right">
-                     <ul class="header_social">
-                        <li><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#" target="_blank"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a href="#" target="_blank"><i class="fa fa-twitter" ></i></a></li>
-                        <li><a href="#" target="_blank"><i class="fa fa-instagram"></i></a></li>
-                     </ul>
-                  </div>
-               </div>
-            </div>
-         </div>
+         
          <div class="tt-header pull-logo">
             <div class="container">
                <div class="top-inner clearfix">
                   <div class="logo pull-left main-logo "><a href="index.html">
-                        <img src="images/logo-top.png" class="img-responsive" alt="" title="logo"></a></div>
+                        <img src="images/4.png" class="img-responsive" style="width: 158px; height: 37px;" alt="" title="logo"></a></div>
                   <div class="cmn-toggle-switch"><span></span></div>
                </div>
                <div class="toggle-block">
@@ -70,17 +52,11 @@
                            <li class="parent">
                               <a href="blog-lefttsidebar.html"><span>食谱推荐</span></a>
                            </li>
-                           <li class="parent">
-                              <a href="#"><span>健康贴士</span></a>
-                           </li>
                            <li>
                               <a href="contactus.html"><span>饮食地图</span></a>
                            </li>
                            <li>
                               <a href="customer-services.html"><span>智能客服</span></a>
-                           </li>
-                           <li class="parent">
-                              <a href="about.html"><span>关于我们</span></a>
                            </li>
                            <li class="parent">
                               <a href="about.html"><span>关于我们</span></a>
@@ -146,10 +122,11 @@
       <!--================ Our contectus Section end=================-->
       
       <div class="baidu-map">
-      	<div id="l-map"></div>
-      	<div id="r-result"></div>
+         <input type="text" placeholder="请输入需要查询的地点" id="suggestId" class="form-control" style="width: 300px;">         
+      	<div id="l-map" style="z-index: -1;"></div>
+         <div id="r-result"></div>
+         <div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
       </div>
-      
       
       <!--================ Our footer Section start=================-->
       <footer class="xyz">
@@ -160,28 +137,30 @@
                      <div class="col-sm-4 col-sm-4">
                         <div class="t-footer">
                            <img src="images/footer-logo.png" class="img-responsive" alt="" title="footer-logo">
-                           <p>Lorem ipsum dolor sit amet, consectetuer 
+                           <p>Lorem ipsum dolor sit amet, consectetuer
                               adipiscing elit. Aenean commodo ligula eget
                               dolor. Aenean massa.
                            </p>
                            <div class="contact">
                               <h4><i class="fa fa-phone"></i> 1(123) 456-7890</h4>
-                              <h4><i class="fa fa-map-marker"></i>     San Diego City, US</h4>
-                              <h4> <i class="fa fa-clock-o"></i> Mon - Sat 9.00 - 17.00</h4>
+                              <h4><i class="fa fa-map-marker"></i> 长沙, 中国</h4>
+                              <h4> <i class="fa fa-clock-o"></i> 星期一至星期日 9:00 - 17:00</h4>
                            </div>
+
                         </div>
                         <!--t-footer-->
+
                      </div>
                      <!--col-->
                      <div class="col-sm-4 col-sm-4">
                         <div class="t-footer">
-                           <h2>Useful Links</h2>
+                           <h2>站内链接</h2>
                            <ul class="tt-footer-list">
-                              <li><a href="index.html">Home</a></li>
-                              <li><a href="about.html">About Us</a></li>
-                              <li><a href="faq.html">Faq</a></li>
-                              <li><a href="appointment.html">Appointment</a></li>
-                              <li><a href="contactus.html">Contact Us</a></li>
+                              <li><a href="index.html">首页</a></li>
+                              <li><a href="about.html">关于我们</a></li>
+                              <li><a href="faq.html">健身计划</a></li>
+                              <li><a href="appointment.html">健康食谱</a></li>
+                              <li><a href="contactus.html">饮食地图</a></li>
                            </ul>
                         </div>
                         <!--t-footer-->
@@ -189,14 +168,14 @@
                      <!--col-->
                      <div class="col-sm-4 col-sm-4">
                         <div class="t-footer">
-                           <h2  class="last">Opening Hours</h2>
-                           <div class="Monday ">
-                              <h5>Monday <span>8:00 AM - 4:00 PM</span></h5>
-                              <h5>Wednesday<span>8:00 AM - 4:00 PM</span></h5>
-                              <h5>Friday <span>8:00 AM - 4:00 PM</span></h5>
-                              <h5>Saturday <span>9:00 AM - 3:00 PM</span></h5>
-                              <h5>Sunday <span>closed</span></h5>
-                           </div>
+                           <h2>友情链接</h2>
+                           <ul class="tt-footer-list">
+                              <li><a href="index.html">Keep</a></li>
+                              <li><a href="about.html">猫扑运动</a></li>
+                              <li><a href="faq.html">小米健康</a></li>
+                              <li><a href="appointment.html">虎扑</a></li>
+                              <li><a href="contactus.html">华为运动</a></li>
+                           </ul>
                         </div>
                         <!--t-footer-->
                      </div>
@@ -221,7 +200,7 @@
                   </div>
                   <div class="col-sm-6 col-xs-12">
                      <div class="tt-copy-right">
-                        <p> Created by: &nbsp;<a href="http://www.bootstrapmb.com/">ThemeChampion</a></p>
+                        <p> Created by: &nbsp;<a href="http://www.bootstrapmb.com/">SOA划水小队</a></p>
                      </div>
                   </div>
                </div>
@@ -243,28 +222,74 @@
       <script src="js/jquery.magnific-popup.min.js"></script>
       <script src="js/jquery.barfiller.js"></script>
       <script type="text/javascript">
-		// 百度地图API功能
-		var map = new BMap.Map("l-map");
-		//var point = new BMap.Point(116.331398,39.897445);
-		//map.centerAndZoom(point,12);
-		var cityPoint;  
-		var geolocation = new BMap.Geolocation();
-		geolocation.getCurrentPosition(function(r){
-			if(this.getStatus() == BMAP_STATUS_SUCCESS){
-				cityPoint = r.point;
-            console.log(cityPoint);
-				map.centerAndZoom(cityPoint,18);
-            var local = new BMap.LocalSearch(map, {renderOptions: {map: map,panel: "r-result",autoViewport: true}});
-            // ["餐饮", "烤鸭"] 
-				local.searchNearby(["烤鸭", "盖码饭"],cityPoint,1000);
-			}
-			else {
-				console.error('failed'+this.getStatus());
-			}        
-		});
-		
+         function G(id) {
+            return document.getElementById(id);
+         }
+         // 百度地图API功能
+         var map = new BMap.Map("l-map");
+         //var point = new BMap.Point(116.331398,39.897445);
+         //map.centerAndZoom(point,12);
+         var cityPoint;  
+         var geolocation = new BMap.Geolocation();
+         geolocation.getCurrentPosition(function(r){
+            if(this.getStatus() == BMAP_STATUS_SUCCESS){
+               cityPoint = r.point;
+               console.log(cityPoint);
+               map.centerAndZoom(cityPoint,18);
+               var local = new BMap.LocalSearch(map, {renderOptions: {map: map,panel: "r-result",autoViewport: true}});
+               // ["餐饮", "烤鸭"] 
+               local.searchNearby(["烤鸭", "盖码饭"],cityPoint,1000);
+            }
+            else {
+               console.error('failed'+this.getStatus());
+            }        
+         });
+         var ac = new BMap.Autocomplete(    //建立一个自动完成的对象
+         {
+            "input" : "suggestId",
+            "location" : map
+         });
+            ac.addEventListener("onhighlight", function(e) {  //鼠标放在下拉列表上的事件
+      var str = "";
+         var _value = e.fromitem.value;
+         var value = "";
+         if (e.fromitem.index > -1) {
+            value = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+         }    
+         str = "FromItem<br />index = " + e.fromitem.index + "<br />value = " + value;
+         
+         value = "";
+         if (e.toitem.index > -1) {
+            _value = e.toitem.value;
+            value = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+         }    
+         str += "<br />ToItem<br />index = " + e.toitem.index + "<br />value = " + value;
+         G("searchResultPanel").innerHTML = str;
+      });
 
-	
+      var myValue;
+      ac.addEventListener("onconfirm", function(e) {    //鼠标点击下拉列表后的事件
+      var _value = e.item.value;
+         myValue = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+         G("searchResultPanel").innerHTML ="onconfirm<br />index = " + e.item.index + "<br />myValue = " + myValue;
+         
+         setPlace();
+      });
+
+      function setPlace(){
+         map.clearOverlays();    //清除地图上所有覆盖物
+         function myFun(){
+            var pp = local.getResults().getPoi(0).point;    //获取第一个智能搜索的结果
+            map.centerAndZoom(pp, 18);
+            map.addOverlay(new BMap.Marker(pp));    //添加标注
+         }
+         var local = new BMap.LocalSearch(map, { //智能搜索
+         onSearchComplete: myFun, renderOptions: {map: map,panel: "r-result",autoViewport: true}
+         });
+         local.searchNearby("餐饮",myValue);
+      }
+
+		
 	   </script>
    </body>
 </html>
