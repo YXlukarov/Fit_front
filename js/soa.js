@@ -179,7 +179,7 @@ $(function () {
 
 $("#searchT").on("click", function () {
     var text = $("#inputContext").val();
-    var url = "http://127.0.0.1:5500/blog-lefttsidebar.html?recipeName=" + text + "&isSearch=" + 1;
+    var url = "http://127.0.0.1:5500/Fit_front/blog-lefttsidebar.html?recipeName=" + text + "&isSearch=" + 1;
     url = encodeURI(url);
     console.log(url)
     window.location.replace(url)
