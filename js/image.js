@@ -93,18 +93,20 @@ $(function() {
     $("#sureCut").on("click",function () {
         var cas = $('#tailoringImg').cropper('getCroppedCanvas');//获取被裁剪后的canvas
         var base64url = cas.toDataURL('image/png'); //转换为base64地址形式
-        base64url=base64url.replace("\r","")
+        base64url=base64url.replace("\r","");
         $.post(url, {op:"takePhoto",base64url:base64url}, function(data) {
+            window.sessionStorage.setItem('dish', JSON.stringify(data));
+            window.location.replace("http://127.0.0.1:5500/Fit_front/dish-details.html?targetImage_url=" + data[0].targetImage_url);
             console.log(data);
-            var result=parseInt($.trim(data.result));
-            if(result==-1){
-                $.messager.show({title:"温馨提示",msg:"输入的信息不完整,确认后重新提交。",timeout:3000,showType:'slide'})
-            }else if(result>0){
-                $.messager.show({title:"成功提示",msg:"头像更新成功",timeout:3000,showType:'slide'})
-                //$('#attendance_info').css('color','green').text("已提交");
-            }else{
-                $.messager.alert("失败提示","头像更新失败，请稍后重试...",'error')
-            }
+            // var result=parseInt($.trim(data.result));
+            // if(result==-1){
+            //     $.messager.show({title:"温馨提示",msg:"输入的信息不完整,确认后重新提交。",timeout:3000,showType:'slide'})
+            // }else if(result>0){
+            //     $.messager.show({title:"成功提示",msg:"头像更新成功",timeout:3000,showType:'slide'})
+            //     //$('#attendance_info').css('color','green').text("已提交");
+            // }else{
+            //     $.messager.alert("失败提示","头像更新失败，请稍后重试...",'error');
+            // }
         }, "JSON");
         //关闭裁剪框
         closeTailor();
@@ -135,7 +137,7 @@ $(function() {
     let video = document.getElementById('video');
     let canvas = document.getElementById('canvas');
     let context = canvas.getContext('2d');
-    var mediaStreamTrack
+    var mediaStreamTrack;
     function success(stream) {
         //兼容webkit核心浏览器
         let CompatibleURL = window.URL || window.webkitURL;
@@ -147,7 +149,7 @@ $(function() {
     }
 
     function error(error) {
-        alert('访问用户媒体设备失败,请尝试更换浏览器')
+        alert('访问用户媒体设备失败,请尝试更换浏览器');
     }
 
     document.getElementById('capture').addEventListener('click', function () {
@@ -155,8 +157,8 @@ $(function() {
         mediaStreamTrack && mediaStreamTrack.stop();
         $('#tailoringImg').cropper('replace', canvas.toDataURL("image/png"),false);//默认false，适应高度，不失真
         $("#video").hide();//隐藏拍照框
-        $("#showImg").show()//将拍照结果显示
-    })
+        $("#showImg").show();//将拍照结果显示
+    });
 
     //请求拍照
     $("#takeAgain").bind("click", function(){
@@ -173,7 +175,7 @@ $(function() {
     function takePhoto() {
         if (navigator.mediaDevices.getUserMedia || navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia) {
             //调用用户媒体设备, 访问摄像头
-            getUserMedia({video : {width: 100, height: 100}}, success, error);
+            getUserMedia({video : {width: 1000, height: 1000}}, success, error);
             $("#showImg").hide();//隐藏拍照结果显示框
             //$('#showImg').html('<img id="tailoringImg" hidden="hidden">')
             $("#video").show();//开启拍照框
